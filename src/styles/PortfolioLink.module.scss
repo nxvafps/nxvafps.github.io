@@ -1,0 +1,45 @@
+.projectContainer {
+    display: grid;
+    grid-template: auto 1fr / 25% 75%;
+    gap: 5px;
+    border: solid 1px transparent;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    padding:0 5px 0 5px;
+    margin: 10px 0 10px 0;
+    .imgContainer {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: center;
+        padding: 0 0 5px 5px;
+        .img {
+            width: 125px;
+            display:block;
+            margin:0;
+        }
+    }
+    .titleContainer {
+        padding: 5px;
+        grid-column: span 2;
+        grid-row: 1;
+        
+        .title {
+            font-size: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+    }
+    .detailsContainer {
+        padding: 0 5px 5px 0;
+        grid-column: 2;
+        grid-row: 2;
+        color: #ffffff;
+        .details {
+            text-align: center;
+        }
+    }
+}
+
+.projectContainer:hover {
+            border-color: #FFF;
+        }

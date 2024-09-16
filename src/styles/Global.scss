@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'futura';
+    src: url('../assets/fonts/Futura.otf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    display: border-box;
+    font-family: 'futura';
+}
+
+.app-background {
+    background-color: #7b7777;
+    height: 100vh;
+}
