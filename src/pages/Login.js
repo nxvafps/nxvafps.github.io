@@ -15,12 +15,10 @@ const LogIn = () => {
         const { error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
-            options: {
-                emailRedirectTo: 'localhost:3000/account',
-            },
         });
 
         if (!error) {
+            setErrorMessage('')
             navigate('/account');
         } else {
             setErrorMessage('There was an issue signing in.');

@@ -34,3 +34,26 @@
         }
     }
 }
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.input {
+    height: 40px;
+    border: 1px solid #ffffff;
+    font-size: 20px;
+    text-align: center;
+    background-color: #7b7777;
+    color: #ffffff;
+
+    &::placeholder {
+        color: #ffffff;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

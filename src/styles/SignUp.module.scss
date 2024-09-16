@@ -40,4 +40,27 @@
             outline: none;
         }
     }
+    .errorContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #630609;
+        height: 40px;
+        .error {
+            display: inline;
+            color: #ffffff;
+        }
+    }
+    .successContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #03470d;
+        height: 40px;
+        .success {
+            text-align: center;
+            display: inline;
+            color: #ffffff;
+        }
+    }
 }

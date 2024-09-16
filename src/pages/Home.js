@@ -45,7 +45,7 @@ const Home = () => {
                 tay a while, explore, and let’s create something amazing together!
             </div>
             <div className={styles.skillShowcase}>
-                <PageSubtitle text='Current Project' />
+                <PageSubtitle textAlign="left" text='Current Project' underline />
                 {fetchError && (<p>{fetchError}</p>)}
                 {projects && (
                     <div className="projectContainer">
@@ -54,7 +54,7 @@ const Home = () => {
                         ))}
                     </div>
                 )}
-                <PageSubtitle text='Latest Upload' />
+                <PageSubtitle textAlign="left" text='Latest Upload' underline />
                 <YoutubeEmbed />
             </div>
         </>

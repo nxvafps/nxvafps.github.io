@@ -2,7 +2,21 @@
     margin: 20px 0 10px 0;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-align: left;
     color: #ffffff;
+}
+
+.textAlign_left {
+    text-align: left;
+}
+
+.textAlign_center {
+    text-align: center;
+}
+
+.textAlign_right {
+    text-align: right;
+}
+
+.underline {
     text-decoration: underline;
 }

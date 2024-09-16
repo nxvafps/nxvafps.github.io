@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import supabase from '../config/supabaseClient';
 import logo from '../assets/images/icons/novaLogo.png';
 import NavButton from '../components/NavButton';
@@ -32,7 +33,7 @@ const Layout = () => {
         return () => subscription.unsubscribe()
     }, [])
     return (
-        <>
+        <div>
             <div className={styles.header}>
                 <div className={styles.headerLeft}>
                     <div className={styles.headerInfo}>
@@ -65,7 +66,11 @@ const Layout = () => {
                 <a className={styles.link} href='https://www.twitch.com/nxvafps' target='_blank' rel="noreferrer" ><img alt='Twitch Icon' className={styles.image} src={ twitch }/></a>
                 <a className={styles.link} href='https://www.discord.gg/tSNujPdzAu' target='_blank' rel="noreferrer" ><img alt='Discord Icon' className={styles.image} src={ discord }/></a>
             </footer>
-        </>
+            <div className={styles.otherLinksContainer}>
+                <Link className={styles.otherLinks} to={'/privacypolicy'}>Privacy Policy</Link>
+                <Link className={styles.otherLinks} to={'/termsofservice'}>Terms Of Service</Link>
+            </div>
+        </div>
     )
 };
 

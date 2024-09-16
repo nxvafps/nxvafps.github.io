@@ -11,6 +11,8 @@ import Nv1 from "../pages/Nv1";
 import Account from "../pages/Account";
 import LogIn from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfService";
 
 function App() {
     return(
@@ -45,6 +47,14 @@ function App() {
                         <Route 
                             path='signup' 
                             element={<SignUp />} 
+                        />
+                        <Route 
+                            path='privacypolicy'
+                            element={<PrivacyPolicy />}
+                        />
+                        <Route 
+                            path='termsofservice'
+                            element={<TermsOfService />}
                         />
                     </Route>
                 </Routes>
