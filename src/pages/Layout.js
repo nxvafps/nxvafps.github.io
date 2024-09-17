@@ -53,7 +53,7 @@ const Layout = () => {
                         </div>
                     ) : (
                         <div className={styles.headerRight}>
-                            <NavButton text="Sign Up" href="/signUp" />
+                            <NavButton text="Sign Up" href="/signup" />
                             <NavButton text="Login" href="/login" />
                         </div>
                     )}
