@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found</title>
+    <script>
+        // Redirect all 404s to index.html
+        var path = window.location.pathname;
+        var redirect = '/index.html';
+        if (path !== '/') {
+            redirect += '#' + path;
+        }
+        window.location.replace(redirect);
+    </script>
+</head>
+<body>
+</body>
+</html>
