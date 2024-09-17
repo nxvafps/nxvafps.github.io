@@ -1,0 +1,30 @@
+.footer {
+    display:flex;
+    justify-content:center;
+    height:80px;
+    width: 80%;
+    margin: 40px auto 0 auto;
+    gap: 20px;
+
+    .image{
+        height:60px
+    }
+
+    .link:hover {
+        background-color: #7b7777;
+    }
+}
+
+.otherLinksContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.otherLinks {
+    color: #ffffff;
+    margin: 0 0 30px 0;
+}
