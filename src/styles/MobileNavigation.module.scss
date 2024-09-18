@@ -7,31 +7,26 @@
     justify-content: space-between;
     position: -webkit-sticky; // For Safari 
     position: sticky;
-    top: 0;
-    z-index: 1000; 
+    top: 0; 
 }
 .headerLeft {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    z-index: 1000;
 }
 .headerLogo {
     height: 60px;
     margin: 0 10px 0 20px;
-    z-index: 1000;
 }
 .headerText {
     font-size: 20px;
     color: #ffffff;
     margin: 0 10px;
-    z-index: 1000;
 }
 .headerRight {
     display: flex;
     align-items: center;
-    z-index: 1000;
 }
 .hamburger {
     font-size: 24px;
