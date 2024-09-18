@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.a804489b.css",
+    "main.css": "/static/css/main.08983241.css",
     "main.js": "/static/js/main.535a4534.js",
     "static/js/952.c9b22ada.chunk.js": "/static/js/952.c9b22ada.chunk.js",
     "static/media/novaBanner.png": "/static/media/novaBanner.49af4b7b1a0c3d6f1522.png",
     "static/media/Futura.otf": "/static/media/Futura.f0eae43398dfe59de6f7.otf",
     "static/media/novaLogo.png": "/static/media/novaLogo.e526ec628e64d179dcf0.png",
     "index.html": "/index.html",
-    "main.a804489b.css.map": "/static/css/main.a804489b.css.map",
+    "main.08983241.css.map": "/static/css/main.08983241.css.map",
     "main.535a4534.js.map": "/static/js/main.535a4534.js.map",
     "952.c9b22ada.chunk.js.map": "/static/js/952.c9b22ada.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a804489b.css",
+    "static/css/main.08983241.css",
     "static/js/main.535a4534.js"
   ]
 }
