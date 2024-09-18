@@ -12,8 +12,6 @@ const Layout = () => {
     return (
         <div>
             {isDesktop ? <DesktopNavigation /> : <MobileNavigation />}
-            <Outlet />
-            <Footer />
         </div>
     );
 };
