@@ -39,7 +39,7 @@ const MobileNavigation = () => {
                 <p className={styles.headerText}>novaFPS</p>
             </div>
             <div className={styles.headerRight}>
-                <button className={styles.hamburger} onClick={toggleMenu}>
+                <button className={`${styles.hamburger} ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                     {isMenuOpen ? '✖' : '☰'}
                 </button>
             </div>

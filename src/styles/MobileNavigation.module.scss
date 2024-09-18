@@ -36,6 +36,10 @@
     cursor: pointer;
     margin: 0 20px 0 0;
     z-index: 1001;
+
+    &.open {
+        color:#ffffff;
+    }
 }
 .overlay {
     position: fixed;
