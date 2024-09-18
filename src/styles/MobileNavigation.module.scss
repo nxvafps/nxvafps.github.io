@@ -45,12 +45,23 @@
     background: none;
     border: none;
     color: #ffffff;
+    background-color: #434343;
     cursor: pointer;
     margin: 0 20px 0 0;
+    padding: 5px;
     z-index: 1002;
 
+    &:hover {
+        color: #434343;
+        background-color: #ffffff;
+    }
     &.open {
         color:#ffffff;
+        background-color: #434343;
+        &:hover {
+            color: #434343;
+            background-color: #ffffff;
+        }
     }
 }
 
