@@ -55,9 +55,11 @@
 }
 
 .mainContent {
+    transition: margin-left 0.3s ease;
     transition: margin-right 0.3s ease;
 }
 
 .mainContent.menuOpen {
+    margin-left: -200px;
     margin-right: 200px;
 }
