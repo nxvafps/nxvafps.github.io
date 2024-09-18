@@ -30,18 +30,30 @@ const DesktopNavigation = () => {
                 <p className={styles.headerText}>novaFPS</p>    
                 <hr className={styles.divider} />
                 <nav className={styles.headerNav}>
-                    <NavButton text="Home" href="/" />
-                    <NavButton text="Portfolio" href="/portfolio" />
-                    <NavButton text="Socials" href="/socials" />
+                    <div className={styles.buttonContainer}>
+                        <NavButton text="Home" href="/" />
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <NavButton text="Portfolio" href="/portfolio" />
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <NavButton text="Socials" href="/socials" />
+                    </div>
                 </nav>
             </div>
             <div className={styles.headerRight}>
                 {user ? (
-                    <NavButton text="Account" href="/account" />
+                    <div className={styles.buttonContainer}>
+                        <NavButton text="Account" href="/account" />
+                    </div>
                 ) : (
                     <>
-                        <NavButton text="Sign Up" href="/signup" />
-                        <NavButton text="Login" href="/login" />
+                        <div className={styles.buttonContainer}>
+                            <NavButton text="Sign Up" href="/signup" />
+                        </div>
+                        <div className={styles.buttonContainer}>
+                            <NavButton text="Login" href="/login" />
+                        </div>
                     </>
                 )}
             </div>

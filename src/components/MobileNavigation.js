@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/MobileNavigation.module.scss';
-import NavButton from "./NavButton";
 import logo from '../assets/images/icons/novaLogo.png';
 import supabase from '../config/supabaseClient';
+import SideMenu from './SideMenu';
 
 const MobileNavigation = () => {
     const [session, setSession] = useState(null);
     const [user, setUser] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -23,6 +24,14 @@ const MobileNavigation = () => {
         return () => subscription.unsubscribe();
     }, []);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <div className={styles.header}>
             <div className={styles.headerLeft}>
@@ -30,10 +39,14 @@ const MobileNavigation = () => {
                 <p className={styles.headerText}>novaFPS</p>
             </div>
             <div className={styles.headerRight}>
-            
+                <button className={styles.hamburger} onClick={toggleMenu}>
+                    {isMenuOpen ? '✖' : '☰'}
+                </button>
             </div>
+            {isMenuOpen && <div className={styles.overlay} onClick={closeMenu}></div>}
+            <SideMenu isOpen={isMenuOpen} closeMenu={closeMenu} />
         </div>
-    )
-}
+    );
+};
 
 export default MobileNavigation;
