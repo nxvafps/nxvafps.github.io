@@ -15,13 +15,39 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    z-index: 1000;
 }
 .headerLogo {
     height: 60px;
     margin: 0 10px 0 20px;
+    z-index: 1000;
 }
 .headerText {
     font-size: 20px;
     color: #ffffff;
     margin: 0 10px;
+    z-index: 1000;
+}
+.headerRight {
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+.hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0 20px 0 0;
+    z-index: 1000;
+}
+.overlay {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }

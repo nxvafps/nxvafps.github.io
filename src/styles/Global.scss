@@ -8,6 +8,22 @@
     padding: 0;
     display: border-box;
     font-family: 'futura';
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track { //background colour
+        background: #ffffff;
+    }
+    
+    ::-webkit-scrollbar-thumb { //scrollbar colour
+        background: #7b7777;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #7b7777;
+    }
 }
 
 .app-background {
