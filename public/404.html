@@ -5,7 +5,8 @@
     <title>Page Not Found</title>
     <script>
         // Redirect all 404s to the root path
-        window.location.replace('/');
+        var path = window.location.pathname + window.location.search;
+        window.location.replace('/index.html' + path);
     </script>
 </head>
 <body>
