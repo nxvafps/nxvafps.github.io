@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import Footer from '../components/Footer'
 
 const Layout = () => {
-    const isDesktop = useMediaQuery({ minWidth: 1000 });
+    const isDesktop = useMediaQuery({ minWidth: 768 });
 
     return (
         <div>
