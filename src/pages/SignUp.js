@@ -35,24 +35,24 @@ const SignUp = () => {
         }
 
         // Check if email or display name already exists
-        const { data: emailExists } = await supabase
+        const { data: emailExists, error: emailError } = await supabase
             .from('auth.users')
             .select('email')
             .eq('email', email)
             .single();
 
-        const { data: displayNameExists } = await supabase
+        const { data: displayNameExists, error: displayNameError } = await supabase
             .from('auth.users')
             .select('user_metadata->display_name')
             .eq('user_metadata->display_name', displayName)
             .single();
 
-        if (emailExists) {
+        if (emailExists || !emailError) {
             setErrorMessage('Email already exists, did you mean to sign in?');
             return;
         }
 
-        if (displayNameExists) {
+        if (displayNameExists || !displayNameError) {
             setErrorMessage('Username already exists, did you mean to sign in?');
             return;
         }
