@@ -14,22 +14,26 @@ const SignUp = () => {
     const signUp = async () => {
         // Check for empty fields
         if (!email || !password || !displayName) {
+            setSuccessMessage('');
             setErrorMessage('All fields are required');
             return;
         }
 
         // Validate display name
         if (displayName.length < 3 || displayName.length > 15) {
+            setSuccessMessage('');
             setErrorMessage('Display name must be between 3 and 15 characters long');
             return;
         }
 
         if (/\s/.test(displayName)) {
+            setSuccessMessage('');
             setErrorMessage('Display name must not contain spaces');
             return;
         }
 
         if (/[^a-zA-Z0-9]/.test(displayName)) {
+            setSuccessMessage('');
             setErrorMessage('Display name must not contain special characters');
             return;
         }
@@ -48,17 +52,20 @@ const SignUp = () => {
             .single();
 
         if (emailExists || !emailError) {
+            setSuccessMessage('');
             setErrorMessage('Email already exists, did you mean to sign in?');
             return;
         }
 
         if (displayNameExists || !displayNameError) {
+            setSuccessMessage('');
             setErrorMessage('Username already exists, did you mean to sign in?');
             return;
         }
 
         // Check if user agreed to privacy policy and terms of service
         if (!agree) {
+            setSuccessMessage('');
             setErrorMessage('You must confirm that you have read the privacy policy and terms of service');
             return;
         }
