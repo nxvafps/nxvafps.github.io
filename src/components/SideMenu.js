@@ -5,6 +5,11 @@ import styles from '../styles/SideMenu.module.scss';
 const SideMenu = ({ isOpen, closeMenu }) => {
     return (
         <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
+            <div className={styles.closeContainer}>
+                <div className={styles.buttonContainer}>
+                    <a href="javascript:void(0)" className={styles.closeButton} onClick={closeMenu}>&times;</a>
+                </div>
+            </div>
             <NavButton text='Home' href='/' onClick={closeMenu} />
             <NavButton text='Portfolio' href='/portfolio' onClick={closeMenu} />
             <NavButton text='Socials' href='/socials' onClick={closeMenu} />

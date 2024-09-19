@@ -25,43 +25,36 @@
 }
 
 .headerLogo {
-    height: 60px;
+    max-height: 50px;
     margin: 0 10px 0 20px;
+    padding: 0 10px;
 }
 
 .headerText {
     font-size: clamp(0.5rem, 2vw + 1rem, 1.5rem);
     color: #ffffff;
-    margin: 0 10px;
 }
 
 .headerRight {
     display: flex;
     align-items: center;
+    max-height: 50px;
+    justify-content: flex-end;
 }
 
-.hamburger {
-    font-size: 24px;
+
+.hamburgerMenu {
+    display: block;
+    font-size: 30px;
     background: none;
     border: none;
     color: #ffffff;
-    background-color: #434343;
     cursor: pointer;
-    margin: 0 20px 0 0;
-    padding: 5px;
-    z-index: 1002;
+    margin: 0 10px;
+    padding: 10px;
 
-    &:hover {
-        color: #434343;
-        background-color: #ffffff;
-    }
     &.open {
-        color:#ffffff;
-        background-color: #434343;
-        &:hover {
-            color: #434343;
-            background-color: #ffffff;
-        }
+        display: none;
     }
 }
 
