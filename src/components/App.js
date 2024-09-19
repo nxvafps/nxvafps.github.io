@@ -17,7 +17,7 @@ import TermsOfService from "../pages/TermsOfService";
 function App() {
     return(
         <div className={styles.background}>
-            <BrowserRouter>
+            <BrowserRouter basename="/">
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route 
