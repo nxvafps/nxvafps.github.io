@@ -5,7 +5,7 @@
     <title>Page Not Found</title>
     <script>
         // Redirect all 404s to index.html
-        var path = window.location.pathname;
+        var path = window.location.pathname + window.location.search;
         var redirect = '/index.html';
         if (path !== '/') {
             redirect += '#' + path;
