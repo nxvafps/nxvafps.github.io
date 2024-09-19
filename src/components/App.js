@@ -15,6 +15,16 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
 
 function App() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+        if (redirect) {
+            navigate(redirect);
+        }
+    }, [navigate]);
+    
     return(
         <div className={styles.background}>
             <BrowserRouter>
