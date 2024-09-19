@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <title>Page Not Found</title>
     <script>
-        // Redirect all 404s to index.html
-        var path = window.location.pathname + window.location.search;
-        var redirect = '/index.html';
-        if (path !== '/') {
-            redirect += '#' + path;
-        }
-        window.location.replace(redirect);
+        // Redirect all 404s to the root path
+        window.location.replace('/');
     </script>
 </head>
 <body>
