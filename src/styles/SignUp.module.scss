@@ -35,7 +35,7 @@
                 justify-content: center; // Center the content inside the label
                 min-width: 40px;
                 height: 40px;
-                background-color: #ffffff;
+                background-color: #7b7777;
                 border: 1px solid #ffffff;
                 border-radius: 4px;
                 position: relative;
@@ -77,6 +77,7 @@
 
         }
         .label {
+            text-align: center;
             display: inline-block;
             color: #ffffff;
             a {

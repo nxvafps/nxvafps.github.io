@@ -44,20 +44,22 @@ const SignUp = () => {
             .select('email')
             .eq('email', email)
             .single();
+            console.log(emailExists);
 
         const { data: displayNameExists, error: displayNameError } = await supabase
             .from('auth.users')
             .select('user_metadata->display_name')
             .eq('user_metadata->display_name', displayName)
             .single();
+            console.log(displayNameExists);
 
-        if (emailExists || !emailError) {
+        if (emailExists) {
             setSuccessMessage('');
             setErrorMessage('Email already exists, did you mean to sign in?');
             return;
         }
 
-        if (displayNameExists || !displayNameError) {
+        if (displayNameExists) {
             setSuccessMessage('');
             setErrorMessage('Username already exists, did you mean to sign in?');
             return;
@@ -74,7 +76,7 @@ const SignUp = () => {
             email: email,
             password: password,
             options: {
-                emailRedirectTo: 'novafps.com/account',
+                emailRedirectTo: 'https://novafps.com/account',
                 data: {
                     display_name: displayName
                 }
@@ -83,7 +85,7 @@ const SignUp = () => {
 
         if (error) {
             setSuccessMessage('');
-            setErrorMessage('There was an issue signing up');
+            setErrorMessage(error.code);
         } else {
             setErrorMessage('');
             setSuccessMessage('Check your emails for a link to confirm your account!');
