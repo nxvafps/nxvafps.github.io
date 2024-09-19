@@ -6,9 +6,7 @@
     <script>
         // Redirect all 404s to the root path
         var path = window.location.pathname + window.location.search;
-        if (!path.includes('index.html')) {
-            window.location.replace('/index.html?redirect=' + encodeURIComponent(path));
-        }
+        window.location.replace('/index.html?redirect=' + encodeURIComponent(path));
     </script>
 </head>
 <body>
