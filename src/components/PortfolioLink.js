@@ -18,7 +18,7 @@ const PortfolioLink = ({project, basePath}) => {
             </div>
             <div className={styles.titleContainer}>
                 <h3 className={styles.title}>{project.name}</h3>
-                <hr />
+                <hr className={styles.divider} />
             </div>
             <div className={styles.detailsContainer}>
                 <p className={styles.details}>{project.details}</p>
