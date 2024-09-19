@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import styles from '../styles/App.module.scss';
 
 //pages
@@ -17,7 +17,7 @@ import TermsOfService from "../pages/TermsOfService";
 function App() {
     return(
         <div className={styles.background}>
-            <BrowserRouter basename="/">
+            <HashRouter basename="/">
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route 
@@ -58,7 +58,7 @@ function App() {
                         />
                     </Route>
                 </Routes>
-            </BrowserRouter> 
+            </HashRouter> 
         </div>
     );
 }
