@@ -1,13 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
-import styles from '../styles/SignUp.module.scss'
+import styles from '../styles/SignUp.module.scss';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
+    const [agree, setAgree] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -29,6 +29,11 @@ const SignUp = () => {
             return;
         }
 
+        if (/[^a-zA-Z0-9]/.test(displayName)) {
+            setErrorMessage('Display name must not contain special characters');
+            return;
+        }
+
         // Check if email or display name already exists
         const { data: emailExists } = await supabase
             .from('auth.users')
@@ -43,12 +48,18 @@ const SignUp = () => {
             .single();
 
         if (emailExists) {
-            setErrorMessage('Email already in use');
+            setErrorMessage('Email already exists, did you mean to sign in?');
             return;
         }
 
         if (displayNameExists) {
-            setErrorMessage('Display name already in use');
+            setErrorMessage('Username already exists, did you mean to sign in?');
+            return;
+        }
+
+        // Check if user agreed to privacy policy and terms of service
+        if (!agree) {
+            setErrorMessage('You must confirm that you have read the privacy policy and terms of service');
             return;
         }
 
@@ -56,23 +67,22 @@ const SignUp = () => {
             email: email,
             password: password,
             options: {
-                emailRedirectTo: 'novafps.com/Login',
+                emailRedirectTo: 'novafps.com/account',
                 data: {
                     display_name: displayName
                 }
             },
-        })
+        });
 
         if (error) {
-            setSuccessMessage('')
-            setErrorMessage('There was an issue signing up')
+            setSuccessMessage('');
+            setErrorMessage('There was an issue signing up');
         } else {
-            setErrorMessage('')
-            setSuccessMessage('Check your emails for a link to confirm your account!')
+            setErrorMessage('');
+            setSuccessMessage('Check your emails for a link to confirm your account!');
         }
     }
 
-    
     return (
         <div>
             <PageTitle text={'Sign Up'} />
@@ -98,6 +108,21 @@ const SignUp = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className={styles.checkboxContainer}>
+                    <input
+                        type="checkbox"
+                        className={styles.checkbox}
+                        id="agree"
+                        checked={agree}
+                        onChange={(e) => setAgree(e.target.checked)}
+                    />
+                    <label htmlFor="agree">
+                        
+                    </label>
+                    <p className={styles.label}>
+                    I agree to the <a href="/privacypolicy" target="_blank">Privacy Policy</a> and <a href="/termsofservice" target="_blank">Terms of Service</a>
+                    </p>
+                </div>
                 <div className={styles.buttonContainer}>
                     <button className={styles.button} onClick={signUp}>Sign Up</button>
                 </div>

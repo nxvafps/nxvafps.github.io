@@ -27,4 +27,8 @@
 .otherLinks {
     color: #ffffff;
     margin: 0 0 30px 0;
+
+    &:hover {
+        color: #434343;
+    }
 }
