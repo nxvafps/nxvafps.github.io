@@ -38,33 +38,6 @@ const SignUp = () => {
             return;
         }
 
-        // Check if email or display name already exists
-        const { data: emailExists, error: emailError } = await supabase
-            .from('auth.users')
-            .select('email')
-            .eq('email', email)
-            .single();
-            console.log(emailExists);
-
-        const { data: displayNameExists, error: displayNameError } = await supabase
-            .from('auth.users')
-            .select('user_metadata->display_name')
-            .eq('user_metadata->display_name', displayName)
-            .single();
-            console.log(displayNameExists);
-
-        if (emailExists) {
-            setSuccessMessage('');
-            setErrorMessage('Email already exists, did you mean to sign in?');
-            return;
-        }
-
-        if (displayNameExists) {
-            setSuccessMessage('');
-            setErrorMessage('Username already exists, did you mean to sign in?');
-            return;
-        }
-
         // Check if user agreed to privacy policy and terms of service
         if (!agree) {
             setSuccessMessage('');
@@ -72,20 +45,55 @@ const SignUp = () => {
             return;
         }
 
-        const { error } = await supabase.auth.signUp({
+        const { data: usernameTaken } = await supabase
+            .from('usernames')
+            .select('displayName')
+            .eq('displayName', displayName)
+            .single()
+            
+        if(usernameTaken) {
+            setSuccessMessage('')
+            setErrorMessage('Username is already taken, please try again')
+            return;
+        }
+
+        const { data: emailTaken } = await supabase
+            .from('usernames')
+            .select('email')
+            .eq('email', email)
+            .single()
+
+        if(emailTaken) {
+            setSuccessMessage('')
+            setErrorMessage('Email is already taken, please try again')
+            return;
+        }
+
+        const { error: signUpError } = await supabase.auth.signUp({
             email: email,
             password: password,
             options: {
-                emailRedirectTo: 'https://novafps.com/account',
                 data: {
                     display_name: displayName
                 }
             },
         });
 
-        if (error) {
+        if (signUpError) {
             setSuccessMessage('');
-            setErrorMessage(error.code);
+            setErrorMessage('Error signing up, please try again')
+            return;
+        } 
+
+
+        const { error: logError } = await supabase
+            .from('usernames')
+            .insert({email: email, displayName: displayName})
+        
+
+        if (logError) {
+            setSuccessMessage('');
+            setErrorMessage('Error adding details to the system, please try again');
         } else {
             setErrorMessage('');
             setSuccessMessage('Check your emails for a link to confirm your account!');
