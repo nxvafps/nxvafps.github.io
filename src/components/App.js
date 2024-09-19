@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import styles from '../styles/App.module.scss';
 
 //pages
@@ -24,7 +24,7 @@ function App() {
             navigate(redirect);
         }
     }, [navigate]);
-    
+
     return(
         <div className={styles.background}>
             <BrowserRouter>
