@@ -1,7 +1,8 @@
 .termsContainer {
-    width: 600px;
-    margin: auto;
+    width: 80%;
+    margin: 30px auto 0 auto;
 }
 .terms {
     color: #ffffff;
+    font-size: clamp(0.5rem, 2vw + 1rem, 1.5rem);
 }
