@@ -7,3 +7,17 @@
     margin: 40px auto 0 auto;
     width: 200px
 }
+
+.pageContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    width: 60%;
+    margin: auto;
+}
+
+.wip {
+    text-align: center;
+    color: #ffffff;
+}

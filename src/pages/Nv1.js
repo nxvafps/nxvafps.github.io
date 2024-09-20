@@ -36,7 +36,9 @@ const Nv1 = () => {
         return (
             <div>
                 <PageTitle text='Overwatch tools' />
-                <p>Logged In!</p>
+                <div className={styles.pageContent}>
+                    <p className={styles.wip}>This project is a work in progress and is currently not publically accessible, please check back soon or look out for updates on my twitter @nxvafps</p>
+                </div>
             </div>
         )
     }
