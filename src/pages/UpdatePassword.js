@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from '../styles/UpdatePassword.module.scss'
 import PageTitle from "../components/PageTitle";
-
+import supabase from "../config/supabaseClient";
 
 const UpdatePassword = () => {
     const [password1, setPassword1] = useState('');
@@ -41,8 +41,14 @@ const UpdatePassword = () => {
             return;
         }
 
+        /*const { data, error } = await supabase.auth.updateUser({ password: password1 })
 
-    
+        if(data) {
+            console.log('success');
+        }
+        if(error) {
+            console.log('failure');
+        }*/
     }
     return(
         <div className={styles.pageContent}>

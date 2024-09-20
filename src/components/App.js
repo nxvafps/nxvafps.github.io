@@ -15,7 +15,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
 import SuccessfulSignup from "../pages/SuccessfulSignup";
 import ForgotPassword from "../pages/ForgotPassword";
-import { UpdatePassword } from "@supabase/auth-ui-react";
+import UpdatePassword from "../pages/UpdatePassword";
 
 function App() {
     return(
