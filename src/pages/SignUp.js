@@ -38,6 +38,24 @@ const SignUp = () => {
             return;
         }
 
+        // Validate email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            setSuccessMessage('');
+            setErrorMessage('Please enter a valid email address');
+            return;
+        }
+
+        // Validate password
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passwordPattern.test(password)) {
+            setSuccessMessage('');
+            setErrorMessage('Password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character');
+            return;
+        }
+
         // Check if user agreed to privacy policy and terms of service
         if (!agree) {
             setSuccessMessage('');
