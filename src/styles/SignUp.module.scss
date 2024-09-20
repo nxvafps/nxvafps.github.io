@@ -117,9 +117,10 @@
         align-items: center;
         background-color: #7b7777;
         border: 1px solid #630609;
-        height: 40px;
+        min-height: 40px;
 
         .error {
+            font-size: 15px;
             text-align: center;
             display: inline;
             color: #630609;
@@ -139,5 +140,36 @@
             display: inline;
             color: #03470d;
         }
+    }
+}
+
+.signIn {
+    text-align: center;
+    color: #ffffff;
+
+    .signInLink {
+        color: #ffffff;
+        text-decoration: underline;
+
+        &:hover {
+            color: #434343;
+        }
+    }
+}
+
+.specificErrorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #7b7777;
+    border: 1px solid #630609;
+    min-height: 40px;
+
+    .specificError {
+        font-size: 15px;
+        text-align: center;
+        display: block;
+        color: #630609;
     }
 }

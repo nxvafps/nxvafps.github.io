@@ -13,6 +13,7 @@ import LogIn from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
+import SuccessfulSignup from "../pages/SuccessfulSignup";
 
 function App() {
     return(
@@ -55,6 +56,10 @@ function App() {
                         <Route 
                             path='termsofservice'
                             element={<TermsOfService />}
+                        />
+                        <Route
+                            path='successfulsignup'
+                            element={<SuccessfulSignup />}
                         />
                     </Route>
                 </Routes>
