@@ -14,6 +14,8 @@ import SignUp from "../pages/SignUp";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
 import SuccessfulSignup from "../pages/SuccessfulSignup";
+import ForgotPassword from "../pages/ForgotPassword";
+import { UpdatePassword } from "@supabase/auth-ui-react";
 
 function App() {
     return(
@@ -61,6 +63,14 @@ function App() {
                             path='successfulsignup'
                             element={<SuccessfulSignup />}
                         />
+                        <Route
+                            path="forgotpassword"
+                            element={<ForgotPassword />}
+                        /> 
+                        <Route
+                            path="updatepassword"
+                            element={<UpdatePassword />}
+                        /> 
                     </Route>
                 </Routes>
             </HashRouter> 

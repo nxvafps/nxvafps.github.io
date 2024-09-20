@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import supabase from "../config/supabaseClient";
 import PageTitle from "../components/PageTitle";
 import styles from '../styles/SignIn.module.scss'
@@ -44,6 +44,10 @@ const LogIn = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button onClick={Login} className={styles.button}>Log In</button>
+                <div className={styles.messages}>
+                    <p className={styles.text}>Forgot your password? <Link className={styles.link} to='/forgotpassword'>Click Here!</Link></p>
+                    <p className={styles.text}>Don't have an account? <Link className={styles.link} to='/signup'>Sign Up</Link></p>
+                </div>
                 {errorMessage && <div className={styles.errorContainer}><p className={styles.error}>{errorMessage}</p></div>}
             </div>
         </div>

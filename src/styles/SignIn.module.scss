@@ -52,3 +52,25 @@
         }
     }
 }
+
+.text {
+    text-align: center;
+    color: #ffffff;
+
+    .link {
+        color: #ffffff;
+        text-decoration: underline;
+
+        &:hover {
+            color: #434343;
+        }
+    }
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

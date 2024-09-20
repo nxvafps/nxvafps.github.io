@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
 import styles from '../styles/SignUp.module.scss';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageSubtitle from "../components/PageSubtitle";
 
 const SignUp = () => {
@@ -203,7 +203,7 @@ const SignUp = () => {
                         
                     </label>
                     <p className={styles.label}>
-                    I agree to the <a href="/privacypolicy" target="_blank">Privacy Policy</a> and <a href="/termsofservice" target="_blank">Terms of Service</a>
+                    I agree to the <Link to="/privacypolicy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link> and <Link to="/termsofservice" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
                     </p>
                 </div>
 
@@ -220,7 +220,7 @@ const SignUp = () => {
                 {errorMessage && <div className={styles.errorContainer}><p className={styles.error}>{errorMessage}</p></div>}
                 {successMessage && <div className={styles.successContainer}><p className={styles.success}>{successMessage}</p></div>}
 
-                <p className={styles.signIn}>Already have an account? <a className={styles.signInLink} href='/login'>Sign In</a></p>
+                <p className={styles.signIn}>Already have an account? <Link className={styles.signInLink} to='/login'>Sign In</Link></p>
             </div>
         </div>
     )
