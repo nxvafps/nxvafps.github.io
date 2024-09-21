@@ -25,6 +25,10 @@ const Account = () => {
         fetchUserData();
     }, []);
 
+    const resetPassword = () => {
+        navigate('/updatepassword');
+    }
+
     const logout = async() => { 
         let { error } = await supabase.auth.signOut()
 
@@ -91,6 +95,7 @@ const Account = () => {
                     <button className={styles.button} onClick={handleSetDisplayName}>Set</button>
                 </div>
             )}
+            <button className={styles.button} onClick={resetPassword}>Reset Password</button>
             <button className={styles.button} onClick={logout}>Log out</button>
             <div className="errorContainer">
                 {errorMessage && <div className={styles.error}><p>{errorMessage}</p></div>}

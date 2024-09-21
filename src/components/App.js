@@ -16,6 +16,8 @@ import TermsOfService from "../pages/TermsOfService";
 import SuccessfulSignup from "../pages/SuccessfulSignup";
 import ForgotPassword from "../pages/ForgotPassword";
 import UpdatePassword from "../pages/UpdatePassword";
+import MagicLinkSent from "../pages/MagicLinkSent";
+import SuccessfulPasswordReset from "../pages/SuccessfulPasswordReset";
 
 function App() {
     return(
@@ -71,6 +73,14 @@ function App() {
                             path="updatepassword"
                             element={<UpdatePassword />}
                         /> 
+                        <Route
+                            path="magiclinksent"
+                            element={<MagicLinkSent />}
+                        />
+                        <Route 
+                            path='successfulpasswordreset'
+                            element={<SuccessfulPasswordReset />}
+                        />
                     </Route>
                 </Routes>
             </HashRouter> 

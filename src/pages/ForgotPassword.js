@@ -3,13 +3,17 @@ import { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
 import styles from '../styles/ForgotPassword.module.scss'
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const sendEmail = async () => {
         setEmailError('');
+        setError('');
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -29,15 +33,30 @@ const ForgotPassword = () => {
             return;
         }
 
-        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'https://novafps.com/updatepassword',
-          })
+        
+        const { data, error } = await supabase.auth.signInWithOtp({
+            email: email,
+            options: {
+            // set this to false if you do not want the user to be automatically signed up
+            shouldCreateUser: false,
+            emailRedirectTo: 'https://novafps.com/updatepassword',
+            },
+        })
+
+        if (data) {
+            setEmailError('');
+            setError('');
+            navigate('/magiclinksent')
+        } else {
+            setError('There was an issue signing up, please wait 60 seconds and then try again.')
+        }
+
+          
 
     }
 
     return (
         <div className={styles.pageContent}>
-            <h1 className={styles.warning}>This feature is currently not working, I will try to push a fix as soon as I can</h1>
             <PageTitle text={'Forgot Password'} />
             <p className={styles.text}>Please enter your email below to get a password reset email.</p>
             <input
@@ -57,6 +76,12 @@ const ForgotPassword = () => {
             <div className={styles.buttonContainer}>
                 <button className={styles.button} onClick={sendEmail}>Reset Password</button>
             </div>
+
+            {error && (
+                <div className={styles.specificErrorContainer}>
+                    <p className={styles.specificError}>{error}</p>
+                </div>
+            )}
         </div>
     )
 }
