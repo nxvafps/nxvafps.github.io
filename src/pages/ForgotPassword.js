@@ -39,7 +39,7 @@ const ForgotPassword = () => {
             options: {
             // set this to false if you do not want the user to be automatically signed up
             shouldCreateUser: false,
-            emailRedirectTo: 'https://novafps.com/updatepassword',
+            emailRedirectTo: 'https://novafps.com/',
             },
         })
 
