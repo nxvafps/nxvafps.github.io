@@ -74,3 +74,20 @@
     justify-content: center;
     gap: 5px;
 }
+
+.specificErrorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #7b7777;
+    border: 1px solid #630609;
+    min-height: 40px;
+
+    .specificError {
+        font-size: 15px;
+        text-align: center;
+        display: block;
+        color: #630609;
+    }
+}
