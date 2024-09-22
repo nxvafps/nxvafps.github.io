@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.1fe851aa.css",
-    "main.js": "/static/js/main.e1515bfc.js",
+    "main.css": "/static/css/main.da4d8f22.css",
+    "main.js": "/static/js/main.c93820f8.js",
     "static/js/952.c9b22ada.chunk.js": "/static/js/952.c9b22ada.chunk.js",
     "static/media/novaBanner.png": "/static/media/novaBanner.49af4b7b1a0c3d6f1522.png",
     "static/media/Futura.otf": "/static/media/Futura.f0eae43398dfe59de6f7.otf",
     "static/media/novaLogo.png": "/static/media/novaLogo.e526ec628e64d179dcf0.png",
     "index.html": "/index.html",
-    "main.1fe851aa.css.map": "/static/css/main.1fe851aa.css.map",
-    "main.e1515bfc.js.map": "/static/js/main.e1515bfc.js.map",
+    "main.da4d8f22.css.map": "/static/css/main.da4d8f22.css.map",
+    "main.c93820f8.js.map": "/static/js/main.c93820f8.js.map",
     "952.c9b22ada.chunk.js.map": "/static/js/952.c9b22ada.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1fe851aa.css",
-    "static/js/main.e1515bfc.js"
+    "static/css/main.da4d8f22.css",
+    "static/js/main.c93820f8.js"
   ]
 }
