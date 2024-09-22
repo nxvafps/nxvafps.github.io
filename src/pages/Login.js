@@ -45,7 +45,7 @@ const LogIn = () => {
             }
 
             const { error: emailSignInError } = await supabase.auth.signInWithPassword({
-                email: email,
+                email: identifier,
                 password: password,
             });
     
