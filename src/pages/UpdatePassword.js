@@ -9,50 +9,50 @@ const UpdatePassword = () => {
     const [passwordError1, setPasswordError1] = useState([]);
     const [password2, setPassword2] = useState('');
     const [passwordError2, setPasswordError2] = useState([]);
-    const [error, setError] = useState('');
+    const [otherError, setOtherError] = useState('');
     const navigate = useNavigate();
 
     const changePassword = async () => {
         setPasswordError1([]);
         setPasswordError2([]);
 
-        if (password1.length < 8) {
-            setPasswordError1(prevErrors => [...prevErrors, 'Password must be at least 8 characters long']);
-        }
-        
-        if (!/[a-z]/.test(password1)) {
-            setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one lowercase letter']);
-        }
-        
-        if (!/[A-Z]/.test(password1)) {
-            setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one uppercase letter']);
-        }
-        
-        if (!/\d/.test(password1)) {
-            setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one number']);
-        }
-        
-        if (!/[@$!%*?&]/.test(password1)) {
-            setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one special character']);
+        if(!password1) {
+            setPasswordError1(prevErrors => [...prevErrors, 'Please enter a value']);
+        } else {
+
+            if (password1.length < 8) {
+                setPasswordError1(prevErrors => [...prevErrors, 'Password must be at least 8 characters long']);
+            }
+            
+            if (!/[a-z]/.test(password1)) {
+                setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one lowercase letter']);
+            }
+            
+            if (!/[A-Z]/.test(password1)) {
+                setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one uppercase letter']);
+            }
+            
+            if (!/\d/.test(password1)) {
+                setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one number']);
+            }
+            
+            if (!/[@$!%*?&]/.test(password1)) {
+                setPasswordError1(prevErrors => [...prevErrors, 'Password must contain at least one special character']);
+            }
         }
 
         if (password2 !== password1) {
-            setPasswordError2('Passwords must match');
+            setPasswordError2(prevErrors => [...prevErrors, 'Passwords must match']);
         }
-        console.log('test1');
-        if (passwordError1 > 0 || passwordError2 > 0) {
+        if (passwordError1.length > 0 || passwordError2.length > 0) {
             return;
         }
-        console.log('test2');
-        const { data, error } = await supabase.auth.updateUser({ password: password1 })
-        console.log('test3');
-        if(data) {
+        const { data: passwordChanged, error: passwordError } = await supabase.auth.updateUser({ password: password1 })
+        if(passwordChanged) {
             navigate('/successfulpasswordreset');
-            console.log('sucess');
         }
-        if(error) {
-            setError('Error updating password, please wait 60 seconds and then try again.');
-            console.log('error');
+        if(passwordError) {
+            setOtherError('Error updating password, please wait 60 seconds and then try again.');
         }
     }
     return(
@@ -96,9 +96,9 @@ const UpdatePassword = () => {
                 <button className={styles.button} onClick={changePassword}>Update Password</button>
             </div>
 
-            {error && (
+            {otherError && (
                 <div className={styles.specificErrorContainer}>
-                    <p className={styles.specificError}>{error}</p>
+                    <p className={styles.specificError}>{otherError}</p>
                 </div>
             )}
 
