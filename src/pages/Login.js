@@ -31,7 +31,7 @@ const LogIn = () => {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (emailPattern.test(identifier)) {
-            const { data, error:emailCheckError } = await supabase
+            const { data:emailCheck, error:emailCheckError } = await supabase
                     .from('usernames')
                     .select('email')
                     .eq('email', identifier);
@@ -39,7 +39,7 @@ const LogIn = () => {
             if (emailCheckError) {
                 setErrorMessage('There was an issue checking your details.');
                 return;
-            } else if (data.length === 0) {
+            } else if (emailCheck.length === 0) {
                 setIdentifierError('This email address is not associated with a user.');
                 return;
             }
@@ -56,7 +56,7 @@ const LogIn = () => {
                 return;
             }
         } else {
-            const { data, error:checkUsernameError } = await supabase
+            const { data:usernameCheck, error:checkUsernameError } = await supabase
                 .from('usernames')
                 .select('*')
                 .eq('displayName', identifier);
@@ -64,11 +64,11 @@ const LogIn = () => {
             if (checkUsernameError) {
                 setErrorMessage('There was in issue checking your details.');
                 return;
-            } else if (data.length === 0) {
+            } else if (usernameCheck.length === 0) {
                 setIdentifierError('This username does not exist');
                 return;
             } else {
-                const email = data[0].email;
+                const email = usernameCheck[0].email;
 
                 const { data, error:usernameSignInError } = await supabase.auth.signInWithPassword({
                     email: email,
