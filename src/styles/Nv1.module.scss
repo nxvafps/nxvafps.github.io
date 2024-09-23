@@ -12,12 +12,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     max-width: 300px;
     width: 60%;
     margin: auto;
+    gap:20px;
 }
 
-.wip {
+.selectRoleText {
     text-align: center;
     color: #ffffff;
+    font-size: 20px;
+}
+
+.tankIcon {
+    grid-area: tank;
+    
+    &:hover {
+        border: 1px solid #ffffff;
+    }
+}
+
+.dpsIcon {
+    grid-area: dps;
+
+    &:hover {
+        border: 1px solid #ffffff;
+    }
+}
+
+.supportIcon {
+    grid-area: support;
+
+    &:hover {
+        border: 1px solid #ffffff;
+    }
+}
+
+.roleIcons {
+    display: grid;
+    grid-template-areas: 
+        'tank dps support';
 }

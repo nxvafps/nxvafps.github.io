@@ -3,7 +3,10 @@ import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
 import { useState, useEffect } from 'react';
 import NavButton from "../components/NavButton";
-import styles from '../styles/Nv1.module.scss'
+import styles from '../styles/Nv1.module.scss';
+import dps from '../assets/images/nv1/roleIcons/DPS icon@1x.png';
+import support from '../assets/images/nv1/roleIcons/Support icon@1x.png';
+import tank from '../assets/images/nv1/roleIcons/Tank icon@1x.png';
 
 const Nv1 = () => {
     const [session, setSession] = useState(null)
@@ -37,7 +40,12 @@ const Nv1 = () => {
             <div>
                 <PageTitle text='Overwatch tools' />
                 <div className={styles.pageContent}>
-                    <p className={styles.wip}>This project is a work in progress and is currently not publically accessible, please check back soon or look out for updates on my twitter @nxvafps</p>
+                    <p className={styles.selectRoleText}>Select a role you would like to track games for:</p>
+                    <div className={styles.roleIcons}>
+                        <img src={tank} alt="tankIcon" className={styles.tankIcon} />
+                        <img src={dps} alt='dpsIcon' className={styles.dpsIcon} />
+                        <img src={support} alt='supportIcon' className={styles.supportIcon} />
+                    </div>
                 </div>
             </div>
         )
