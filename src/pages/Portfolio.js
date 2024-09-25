@@ -1,7 +1,7 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
 import PortfolioLink from "../components/PortfolioLink";
-import styles from '../styles/Portfolio.module.scss'
+import styles from '../styles/pages/Portfolio.module.scss';
 import supabase from "../config/supabaseClient";
 import { useEffect, useState } from "react"
 

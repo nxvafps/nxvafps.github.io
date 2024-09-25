@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from '../styles/UpdatePassword.module.scss'
+import styles from '../styles/pages/UpdatePassword.module.scss';
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
 import { useNavigate } from "react-router-dom";

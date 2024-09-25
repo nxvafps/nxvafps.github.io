@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../styles/SuccessfulPasswordReset.module.scss';
+import styles from '../styles/pages/SuccessfulPasswordReset.module.scss';
 import PageTitle from "../components/PageTitle";
 import { useNavigate } from "react-router-dom";
 

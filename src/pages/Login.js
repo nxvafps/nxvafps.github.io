@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import supabase from "../config/supabaseClient";
 import PageTitle from "../components/PageTitle";
-import styles from '../styles/SignIn.module.scss'
+import styles from '../styles/pages/SignIn.module.scss';
 
 const LogIn = () => {
     const [identifier, setIdentifier] = useState('');

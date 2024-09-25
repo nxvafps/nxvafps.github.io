@@ -5,7 +5,7 @@ import twitter from '../assets/images/icons/twitterIcon.png';
 import tiktok from '../assets/images/icons/tiktokIcon.png';
 import twitch from '../assets/images/icons/twitchIcon.png';
 import discord from '../assets/images/icons/discordIcon.png';
-import styles from '../styles/Footer.module.scss'
+import styles from '../styles/components/Footer.module.scss';
 
 const Footer = () => {
     return (

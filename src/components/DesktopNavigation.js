@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/DesktopNavigation.module.scss';
+import styles from '../styles/components/DesktopNavigation.module.scss';
 import NavButton from "./NavButton";
 import logo from '../assets/images/icons/novaLogo.png';
 import supabase from '../config/supabaseClient';

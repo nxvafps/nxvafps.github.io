@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import styles from '../styles/App.module.scss';
+import styles from '../styles/components/App.module.scss';
 
 //pages
 import Layout from "../pages/Layout"

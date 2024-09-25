@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import styles from '../styles/MagicLinkSent.module.scss'
+import styles from '../styles/pages/MagicLinkSent.module.scss';
 
 const MagicLinkSent = () => {
     return (

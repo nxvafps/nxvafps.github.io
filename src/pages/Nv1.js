@@ -3,7 +3,7 @@ import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
 import { useState, useEffect } from 'react';
 import NavButton from "../components/NavButton";
-import styles from '../styles/Nv1.module.scss';
+import styles from '../styles/pages/Nv1.module.scss';
 import Home from "../views/nv1/Home";
 import RoleSelect from "../views/nv1/RoleSelect";
 

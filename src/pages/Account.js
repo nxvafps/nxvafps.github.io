@@ -3,7 +3,7 @@ import supabase from "../config/supabaseClient";
 import PageTitle from "../components/PageTitle";
 import PageSubtitle from "../components/PageSubtitle";
 import { useNavigate } from "react-router-dom";
-import styles from '../styles/Account.module.scss'
+import styles from '../styles/pages/Account.module.scss';
 
 const Account = () => {
     const [errorMessage, setErrorMessage] = useState('');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/Dropdown.module.scss'
+import styles from '../styles/components/Dropdown.module.scss'
 
 const Dropdown = ({ input, placeholder }) => {
     const [filter, setFilter] = useState('');

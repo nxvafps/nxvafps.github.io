@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../styles/PageSubtitle.module.scss';
+import styles from '../styles/components/PageSubtitle.module.scss';
 
 const PageSubtitle = ({ text, textAlign = 'center', underline = false }) => {
     const textAlignClass = styles[`textAlign_${textAlign}`];

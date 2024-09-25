@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
-import styles from '../styles/ForgotPassword.module.scss'
+import styles from '../styles/pages/ForgotPassword.module.scss';
 import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {

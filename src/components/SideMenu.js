@@ -1,6 +1,6 @@
 import React from "react";
 import NavButton from "./NavButton";
-import styles from '../styles/SideMenu.module.scss';
+import styles from '../styles/components/SideMenu.module.scss';
 
 const SideMenu = ({ isOpen, closeMenu }) => {
     return (

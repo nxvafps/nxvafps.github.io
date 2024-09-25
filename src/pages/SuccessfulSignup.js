@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import styles from '../styles/SuccessfulSignup.module.scss'
+import styles from '../styles/pages/SuccessfulSignup.module.scss'
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import supabase from "../config/supabaseClient";

@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import styles from '../styles/PrivacyPolicy.module.scss';
+import styles from '../styles/pages/PrivacyPolicy.module.scss';
 
 const PrivacyPolicy = () => {
     return (

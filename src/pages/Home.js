@@ -4,7 +4,7 @@ import PageSubtitle from "../components/PageSubtitle";
 import YoutubeEmbed from "../components/YoutubeEmbed";
 import PortfolioLink from "../components/PortfolioLink";
 import banner from '../assets/images/icons/novaBanner.png';
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/pages/Home.module.scss';
 import supabase from "../config/supabaseClient";
 import { useEffect, useState } from "react";
 

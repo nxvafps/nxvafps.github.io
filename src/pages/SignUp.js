@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import supabase from "../config/supabaseClient";
-import styles from '../styles/SignUp.module.scss';
+import styles from '../styles/pages/SignUp.module.scss';
 import { Link, useNavigate } from "react-router-dom";
-import PageSubtitle from "../components/PageSubtitle";
 
 const SignUp = () => {
     const [email, setEmail] = useState('');

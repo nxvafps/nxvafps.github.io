@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import styles from '../styles/MobileNavigation.module.scss';
+import styles from '../styles/components/MobileNavigation.module.scss';
 import logo from '../assets/images/icons/novaLogo.png';
 import supabase from '../config/supabaseClient';
 import SideMenu from './SideMenu';

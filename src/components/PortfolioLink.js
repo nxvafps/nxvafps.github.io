@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from '../styles/PortfolioLink.module.scss'
+import styles from '../styles/components/PortfolioLink.module.scss';
 
 const PortfolioLink = ({project, basePath}) => {
     const logo = `${process.env.PUBLIC_URL}/${project.iconLocation}`;
