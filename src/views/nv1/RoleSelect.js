@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
 import styles from '../../styles/views/nv1/RoleSelect.module.scss';
-import tank from '../../assets/images/nv1/roleIcons/Tank icon@1x.png';
-import dps from '../../assets/images/nv1/roleIcons/DPS icon@1x.png';
-import support from '../../assets/images/nv1/roleIcons/Support icon@1x.png';
+import tank from '../../assets/images/nv1/roleIcons/tank.png';
+import dps from '../../assets/images/nv1/roleIcons/dps.png';
+import support from '../../assets/images/nv1/roleIcons/support.png';
 
 const RoleSelect = ({setCurrentView, setRole, ranks}) => {
     const [tankRank, setTankRank] = useState('');

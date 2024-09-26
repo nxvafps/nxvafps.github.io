@@ -70,12 +70,16 @@ const LogIn = () => {
             } else {
                 const email = usernameCheck[0].email;
 
-                const { data, error:usernameSignInError } = await supabase.auth.signInWithPassword({
+                const { data:usernameSignInSuccess, error:usernameSignInError } = await supabase.auth.signInWithPassword({
                     email: email,
                     password: password,
                 });
 
-                if (!usernameSignInError) {
+                if (usernameSignInError) {
+                    setErrorMessage('There was an error signing you in');
+                    return;
+                }
+                else if (usernameSignInSuccess) {
                     navigate('/account');
                 } else {
                     setPasswordError('This password is incorrect.');
