@@ -6,24 +6,57 @@ import NavButton from "../components/NavButton";
 import styles from '../styles/pages/Nv1.module.scss';
 import Home from "../views/nv1/Home";
 import RoleSelect from "../views/nv1/RoleSelect";
+import TrackGames from "../views/nv1/TrackGames";
 
 const Nv1 = () => {
+    const season = process.env.REACT_APP_COMPETETIVE_SEASON;
     const [session, setSession] = useState(null);
     const [currentView, setCurrentView] = useState('home');
+    const [role, setRole] = useState('');
+    const [user, setUser] = useState(null);
+    const [ranks, setRanks] = useState(null);
 
+    const onRanksTable = async (user) => {
+        const { data: onRankTable } = await supabase
+            .from('ranks')
+            .select('user_id')
+            .eq('user_id', user);
+    
+        if (onRankTable.length > 0) {
+            const { data: ranks } = await supabase
+                .from('ranks')
+                .select('tank', 'dps', 'support')
+                .eq('user_id', user);
+            setRanks(ranks);
+        } else {
+            await supabase
+                .from('ranks')
+                .insert({ user_id: user });
+        }
+    };
+    
     useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session)
-        })
-
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session)
-        })
-
-        return () => subscription.unsubscribe()
-    }, [])
+        const fetchUser = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            setSession(session);
+    
+            const { data: { user } } = await supabase.auth.getUser();
+            setUser(user.id);
+    
+            if (user.id) {
+                await onRanksTable(user.id);
+            }
+        };
+    
+        fetchUser();
+    
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session);
+        });
+    
+        return () => subscription.unsubscribe();
+    }, []);
+    
 
     if(!session) {
         return (
@@ -39,7 +72,8 @@ const Nv1 = () => {
         return (
             <div>
                 {currentView === 'home' && <Home setCurrentView={setCurrentView} />}
-                {currentView === 'roleSelect' && <RoleSelect setCurrentView={setCurrentView} />}
+                {currentView === 'roleSelect' && <RoleSelect setCurrentView={setCurrentView} setRole={setRole} ranks={ranks} />}
+                {currentView === 'trackGames' && <TrackGames setCurrentView={setCurrentView} role={role} season={season} user={user}/>}
             </div>
         )
     }

@@ -54,31 +54,51 @@
 }
 
 .tankIcon {
-    grid-area: tank;
+    grid-area: tankIcon;
     
     &:hover {
         border: 1px solid #ffffff;
     }
 }
 
+.tankRank {
+    grid-area: tankRank;
+    color: #ffffff;
+    text-align: center;
+}
+
 .dpsIcon {
-    grid-area: dps;
+    grid-area: dpsIcon;
 
     &:hover {
         border: 1px solid #ffffff;
     }
 }
 
+.dpsRank {
+    grid-area: dpsRank;
+    color: #ffffff;
+    text-align: center;
+}
+
 .supportIcon {
-    grid-area: support;
+    grid-area: supportIcon;
 
     &:hover {
         border: 1px solid #ffffff;
     }
+}
+
+.supportRank {
+    grid-area: supportRank;
+    color: #ffffff;
+    text-align: center;
 }
 
 .roleIcons {
     display: grid;
+    row-gap: 10px;
     grid-template-areas: 
-        'tank dps support';
+        'tankIcon dpsIcon supportIcon'
+        'tankRank dpsRank supportRank';
 }
