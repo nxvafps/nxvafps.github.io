@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styles from '../styles/components/DesktopNavigation.module.scss';
 import NavButton from "./NavButton";
 import logo from '../assets/images/icons/novaLogo.png';
-import supabase from '../config/supabaseClient';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
+import AuthContext from '../context/AuthContext';
 
 const DesktopNavigation = () => {
-    const [session, setSession] = useState(null);
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-            setUser(session?.user);
-        });
-
-        return () => subscription.unsubscribe();
-    }, []);
+    const { user } = useContext(AuthContext);
 
     return (
         <>

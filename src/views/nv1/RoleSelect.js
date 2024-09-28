@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
 import styles from '../../styles/views/nv1/RoleSelect.module.scss';
-import tank from '../../assets/images/nv1/roleIcons/tank.png';
-import dps from '../../assets/images/nv1/roleIcons/dps.png';
-import support from '../../assets/images/nv1/roleIcons/support.png';
+import tank from '../../assets/images/nv1/roles/tank.png';
+import dps from '../../assets/images/nv1/roles/dps.png';
+import support from '../../assets/images/nv1/roles/support.png';
+import Nv1Context from "../../context/Nv1Context";
 
-const RoleSelect = ({setCurrentView, setRole, ranks}) => {
-    const [tankRank, setTankRank] = useState('');
-    const [dpsRank, setDpsRank] = useState('');
-    const [supportRank, setSupportRank] = useState('');
+const RoleSelect = () => {
+    const {setCurrentView, setRole, tankRank, setTankRank, dpsRank, setDpsRank, supportRank, setSupportRank} = useContext(Nv1Context);
 
     useEffect(() => {
-        if(ranks.tank == null) {
+        if(tankRank == null) {
             setTankRank('unranked');
         }
     
-        if(ranks.dps == null) {
+        if(dpsRank == null) {
             setDpsRank('unranked');
         }
     
-        if(ranks.support == null) {
+        if(supportRank == null) {
             setSupportRank('unranked');
         }
-    }, [ranks]);
+    }, [tankRank, dpsRank, supportRank, setTankRank, setDpsRank, setSupportRank]);
     
     const handleRoleSelect = (role) => {
         setRole(role);

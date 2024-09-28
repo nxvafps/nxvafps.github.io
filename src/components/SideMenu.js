@@ -1,25 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavButton from "./NavButton";
 import styles from '../styles/components/SideMenu.module.scss';
+import AuthContext from "../context/AuthContext";
 
 const SideMenu = ({ isOpen, closeMenu }) => {
-    const [session, setSession] = useState(null);
-    const [user, setUser] = useState(null);
+    const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-            setUser(session?.user);
-        });
-
-        return () => subscription.unsubscribe();
-    }, []);
     return (
         <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
             <div className={styles.closeContainer}>

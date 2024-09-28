@@ -1,30 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styles from '../styles/components/MobileNavigation.module.scss';
 import logo from '../assets/images/icons/novaLogo.png';
-import supabase from '../config/supabaseClient';
 import SideMenu from './SideMenu';
 import Footer from './Footer';
 
 const MobileNavigation = () => {
-    const [session, setSession] = useState(null);
-    const [user, setUser] = useState(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-        });
-
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-            setUser(session?.user);
-        });
-
-        return () => subscription.unsubscribe();
-    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);

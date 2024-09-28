@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import PageTitle from "../../components/PageTitle";
-import styles from '../../styles/views/nv1/Home.module.scss'
+import styles from '../../styles/views/nv1/Home.module.scss';
+import Nv1Context from "../../context/Nv1Context";
 
-const Home = ({ setCurrentView }) => {
+const Home = () => {
+    const { setCurrentView } = useContext(Nv1Context);
     return (
         <div>
             <PageTitle text='Overwatch Tools'/>
