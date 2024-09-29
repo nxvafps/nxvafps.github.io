@@ -65,11 +65,6 @@ const TrackGames = () => {
                     <RankDisplay value={roleRank} />
                 </div>
             </div>
-            <div className={styles.pageContent}>
-                
-                <h3>{userId}</h3>
-                
-            </div>
         </div>
     )
 }
