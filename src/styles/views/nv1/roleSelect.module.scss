@@ -53,20 +53,15 @@
     font-size: 20px;
 }
 
-.tankIcon {
-    grid-area: tankIcon;
+.tank {
+    grid-area: tank;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    &:hover {
-        border: 1px solid #ffffff;
-    }
 }
 
-.dpsIcon {
-    grid-area: dpsIcon;
+.tankButton {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,8 +72,34 @@
     }
 }
 
-.supportIcon {
-    grid-area: supportIcon;
+.dps {
+    grid-area: dps;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dpsButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        border: 1px solid #ffffff;
+    }
+}
+
+.support {
+    grid-area: support;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.supportButton {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,5 +114,27 @@
     display: grid;
     row-gap: 10px;
     grid-template-areas: 
-        'tankIcon dpsIcon supportIcon';
+        'tank dps support';
+}
+
+.changeRank {
+    outline: none;
+    border: none;
+    width: 75px;
+    max-width: 75px;
+    height: 40px;
+    color: #7b7777;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    margin: 5px 0 0 0;
+
+    &:hover {
+        background-color: #434343;
+        color: #ffffff;
+    }
+
+    &:focus {
+        outline: none;
+    }
 }

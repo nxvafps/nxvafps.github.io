@@ -18,7 +18,12 @@ const RoleSelect = () => {
             setCurrentView('trackGames');
         }
     };
-    console.log(dpsRank);
+
+    const handleChangeRank = (role) => {
+        setRole(role);
+        setCurrentView('rankSelect');
+    }
+    
 
     return (
         <div>
@@ -31,17 +36,27 @@ const RoleSelect = () => {
             <div className={styles.pageContent}>
                 <p className={styles.text}>Select a role you would like to track games for:</p>
                 <div className={styles.roleIcons}>
-                    <div className={styles.tankIcon}>
-                        <img src={tank} alt="tankIcon" onClick={() => handleRoleSelect('tank', tankRank)} />
-                        <RankDisplay value={tankRank} />
+                    <div className={styles.tank}>
+                        <div className={styles.tankButton} onClick={() => handleRoleSelect('tank', tankRank)}>
+                            <img src={tank} alt="tankIcon" />
+                            <RankDisplay value={tankRank} />
+                        </div>
+                        <button className={styles.changeRank} onClick={() => handleChangeRank('tank')}>Change Rank</button>
                     </div>
-                    <div className={styles.dpsIcon}>
-                        <img src={dps} alt='dpsIcon' onClick={() => handleRoleSelect('dps', dpsRank)} />
-                        <RankDisplay value={dpsRank} />
+
+                    <div className={styles.dps}>
+                        <div className={styles.dpsButton} onClick={() => handleRoleSelect('dps', dpsRank)}>
+                            <img src={dps} alt='dpsIcon' />
+                            <RankDisplay value={dpsRank} />
+                        </div>
+                        <button className={styles.changeRank} onClick={() => handleChangeRank('dps')}>Change Rank</button>
                     </div>
-                    <div className={styles.supportIcon}>
-                        <img src={support} alt='supportIcon' onClick={() => handleRoleSelect('support', supportRank)} />
-                        <RankDisplay value={supportRank} />
+                    <div className={styles.support}>
+                        <div className={styles.supportButton} onClick={() => handleRoleSelect('support', supportRank)}>
+                            <img src={support} alt='supportIcon' />
+                            <RankDisplay value={supportRank} />
+                        </div>
+                        <button className={styles.changeRank} onClick={() => handleChangeRank('support')}>Change Rank</button>
                     </div>
                 </div>
             </div>
