@@ -8,6 +8,7 @@ import RoleSelect from "../views/nv1/RoleSelect";
 import TrackGames from "../views/nv1/TrackGames";
 import AuthContext from "../context/AuthContext";
 import Nv1Context from "../context/Nv1Context";
+import RankSelect from "../views/nv1/RankSelect";
 
 const Nv1 = () => {
     const season = process.env.REACT_APP_COMPETETIVE_SEASON;
@@ -28,11 +29,11 @@ const Nv1 = () => {
         if (onRankTable.length > 0) {
             const { data: ranks } = await supabase
                 .from('ranks')
-                .select('tank', 'dps', 'support')
+                .select('*')
                 .eq('user_id', userId);
-            setTankRank(ranks.tank);
-            setDpsRank(ranks.dps);
-            setSupportRank(ranks.support);
+            setTankRank(ranks[0].tank);
+            setDpsRank(ranks[0].dps);
+            setSupportRank(ranks[0].support);
         } else {
             await supabase
                 .from('ranks')
@@ -70,7 +71,8 @@ const Nv1 = () => {
             <Nv1Context.Provider value={{ setCurrentView, userId, season, role, setRole, tankRank, setTankRank, dpsRank, setDpsRank, supportRank, setSupportRank}}>
                 {currentView === 'home' && <Home />}
                 {currentView === 'roleSelect' && <RoleSelect />}
-                {currentView === 'trackGames' && <TrackGames setCurrentView={setCurrentView} role={role} season={season} user={userId}/>}
+                {currentView === 'rankSelect' && <RankSelect />}
+                {currentView === 'trackGames' && <TrackGames />}
             </Nv1Context.Provider>
         )
     }

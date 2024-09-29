@@ -47,51 +47,30 @@
     gap:20px;
 }
 
-.text {
+.rankInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    outline: none;
+    border: none;
+    width: 300px;
+    max-width: 300px;
+    height: 40px;
+    color: #7b7777;
+    background-color: #ffffff;
     text-align: center;
-    color: #ffffff;
     font-size: 20px;
-}
-
-.tankIcon {
-    grid-area: tankIcon;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    &:hover {
-        border: 1px solid #ffffff;
-    }
-}
-
-.dpsIcon {
-    grid-area: dpsIcon;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
     &:hover {
-        border: 1px solid #ffffff;
+        background-color: #434343;
+        color: #ffffff;
     }
-}
 
-.supportIcon {
-    grid-area: supportIcon;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-        border: 1px solid #ffffff;
+    &:focus {
+        outline: none;
     }
-}
-
-.roleIcons {
-    display: grid;
-    row-gap: 10px;
-    grid-template-areas: 
-        'tankIcon dpsIcon supportIcon';
 }

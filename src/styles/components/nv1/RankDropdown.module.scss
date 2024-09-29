@@ -1,0 +1,11 @@
+.rankDropdown {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: none;
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
