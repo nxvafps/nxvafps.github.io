@@ -35,3 +35,35 @@
         outline: none;
     }
 }
+
+.pageContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 60%;
+    margin: auto;
+}
+
+.startingRank {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.startingRankText {
+    color: #ffffff;
+}
+
+.season {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seasonText {
+    color: #ffffff;
+}
