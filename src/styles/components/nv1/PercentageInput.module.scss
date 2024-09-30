@@ -12,6 +12,7 @@
     -moz-appearance: textfield;
         &::placeholder {
             color: #ffffff;
+            font-size: 15px;
         }
         &:hover {
             outline:none;
