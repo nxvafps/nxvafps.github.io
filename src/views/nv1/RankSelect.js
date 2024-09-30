@@ -74,9 +74,8 @@ const RankSelect = () => {
                 <div className={styles.rankInput}>
                     <RankDropdown onChange={handleRankChange} />
                     <PercentageInput value={percentage} onChange={handlePercentageChange} />
-                    
+                    <button className={styles.button} onClick={handleSave}>Save</button>
                 </div>
-                <button className={styles.button} onClick={handleSave}>Save</button>
             </div>
         </div>
     )

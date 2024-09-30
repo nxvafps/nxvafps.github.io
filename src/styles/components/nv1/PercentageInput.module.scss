@@ -1,5 +1,28 @@
 .percentageInput {
-    width:150px;
+    width:200px;
     height: 40px;
     text-align: center;
+    border:none;
+    outline:none;
+    border: solid 1px #ffffff;
+    background-color: #7b7777;
+    color:#ffffff;
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: textfield;
+        &::placeholder {
+            color: #ffffff;
+        }
+        &:hover {
+            outline:none;
+        }
+        &:focus {
+            outline:none;
+        }    
+}
+
+.percentageInput::-webkit-inner-spin-button,
+.percentageInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

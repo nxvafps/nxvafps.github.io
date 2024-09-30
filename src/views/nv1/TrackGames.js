@@ -3,6 +3,7 @@ import styles from '../../styles/views/nv1/TrackGames.module.scss';
 import PageTitle from "../../components/PageTitle";
 import Nv1Context from "../../context/Nv1Context";
 import RankDisplay from "../../components/nv1/RankDisplay";
+import supabase from "../../config/supabaseClient"; 
 
 const TrackGames = () => {
     const [roleRank, setRoleRank] = useState('');
@@ -10,9 +11,9 @@ const TrackGames = () => {
     const [map, setMap] = useState('');
     const [mode, setMode] = useState('');
     const [formData, setFormData] = useState({
-        userId: userId,
-        competitiveSeason: season,
-        role: role,
+        userId: '',
+        competitiveSeason: '',
+        role: '',
         gameNumber: '',
         date: '',
         rankBeforeGame: '',
@@ -23,7 +24,24 @@ const TrackGames = () => {
         rankAfterGame: '',
     });
 
+    const setBaseFormData = () => {
+        setFormData({
+            userId: userId,
+            competitiveSeason: season,
+            role: role,
+            gameNumber: '',
+            date: '',
+            rankBeforeGame: '',
+            myScore: '',
+            enemyScore: '',
+            result: '',
+            srChange: '',
+            rankAfterGame: '',
+        });
+    }
+
     useEffect(() => {
+        setBaseFormData();
         switch (role) {
             case 'tank':
                 setRoleRank(tankRank);
@@ -46,7 +64,28 @@ const TrackGames = () => {
         const now = new Date();
         const formattedDateTime = `${now.getFullYear().toString().slice(-2)}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
         setFormData(prevFormData => ({ ...prevFormData, date: formattedDateTime }));
+        
     }, []);
+
+    useEffect(() => {
+        const fetchGamesPlayed = async () => {
+            const { data: gamesPlayed, error } = await supabase
+                .from('games')
+                .select('*')
+                .eq('user_id', userId)
+                .eq('competitive_season', season)
+                .eq('role', role);
+    
+            if (error) {
+                console.error('Error fetching games:', error);
+                return;
+            }
+    
+            setFormData(prevFormData => ({ ...prevFormData, gameNumber: gamesPlayed.length + 1 }));
+        };
+    
+        fetchGamesPlayed();
+    }, [userId, season, role]);
 
     return (
         <div>

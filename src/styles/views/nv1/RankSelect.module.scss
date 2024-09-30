@@ -49,15 +49,16 @@
 
 .rankInput {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap:5px;
 }
 
 .button {
     outline: none;
     border: none;
-    width: 300px;
+    width: 200px;
     max-width: 300px;
     height: 40px;
     color: #7b7777;
