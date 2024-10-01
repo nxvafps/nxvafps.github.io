@@ -22,13 +22,13 @@ const Nv1 = () => {
 
     const onRanksTable = async (userId) => {
         const { data: onRankTable } = await supabase
-            .from('ranks')
+            .from('user_ranks')
             .select('user_id')
             .eq('user_id', userId);
     
         if (onRankTable.length > 0) {
             const { data: ranks } = await supabase
-                .from('ranks')
+                .from('user_ranks')
                 .select('*')
                 .eq('user_id', userId);
             setTankRank(ranks[0].tank);
@@ -36,7 +36,7 @@ const Nv1 = () => {
             setSupportRank(ranks[0].support);
         } else {
             await supabase
-                .from('ranks')
+                .from('user_ranks')
                 .insert({ user_id: userId });
         }
     };

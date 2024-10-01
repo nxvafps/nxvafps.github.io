@@ -27,21 +27,21 @@ const RankSelect = () => {
             case 'tank':
                 setTankRank(rankValue);
                 await supabase
-                    .from('ranks')
+                    .from('user_ranks')
                     .update({tank: rankValue})
                     .eq('user_id', userId)
                 break;
             case 'dps':
                 setDpsRank(rankValue);
                 await supabase
-                    .from('ranks')
+                    .from('user_ranks')
                     .update({dps: rankValue})
                     .eq('user_id', userId)
                 break;
             case 'support':
                 setSupportRank(rankValue);
                 await supabase
-                    .from('ranks')
+                    .from('user_ranks')
                     .update({support: rankValue})
                     .eq('user_id', userId)
                 break;
