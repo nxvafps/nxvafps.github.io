@@ -92,12 +92,14 @@ const TrackGames = () => {
             <div className={styles.titleContainer}>
                 <button className={styles.backButton} onClick={() => setCurrentView('roleSelect')}>Back</button>
                 <div className={styles.title}>
-                    <PageTitle text={`Track Game: ${role}`}/>
+                    <PageTitle text='Track Game'/>
                 </div>
             </div>
-            <div className={styles.pageContent}>            
-                <div className={styles.season}>
-                    <p className={styles.seasonText}>Season: {season}</p>
+            <div className={styles.pageContent}>       
+                <div className={styles.info}>
+                    <p className={styles.text}>Season: {season},</p>
+                    <p className={styles.text}>Role: {role},</p>
+                    <p className={styles.text}>Game Number: {formData.gameNumber}</p>
                 </div>
                 <div className={styles.startingRank}>
                     <p className={styles.startingRankText}>Starting Rank: </p>
