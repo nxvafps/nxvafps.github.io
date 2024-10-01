@@ -35,11 +35,11 @@ const customStyles = (value) => ({
         boxShadow: 'none',
         color: '#ffffff',
         textAlign: 'center',
+        textAlignLast: 'center',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        textAlignLast: 'center'
+        justifyContent: 'center'
     }),
     singleValue: (base) => ({
         ...base,
@@ -126,7 +126,9 @@ const Dropdown = ({ options, onChange, placeholder, value }) => {
             onChange={handleChange}
             onInputChange={handleInputChange} 
             placeholder= {placeholder}
-            isSearchable 
+            isSearchable
+            tabSelectsValue
+            escapeClearsValue
             styles={customStyles(!!value)}
             value={value}
             inputValue={inputValue}
