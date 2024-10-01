@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from '../../styles/views/nv1/RankSelect.module.scss';
 import Nv1Context from "../../context/Nv1Context";
 import PageTitle from "../../components/PageTitle";
-import RankDropdown, { ranks } from "../../components/nv1/RankDropdown";
+import Dropdown from "../../components/Dropdown";
 import PercentageInput from "../../components/nv1/PercentageInput";
 import supabase from "../../config/supabaseClient";
 import { calculateRankNumber } from "../../utility/nv1/rankUtils";
@@ -11,6 +11,23 @@ const RankSelect = () => {
     const { userId, setCurrentView, role, tankRank, setTankRank, dpsRank, setDpsRank, supportRank, setSupportRank } = useContext(Nv1Context);
     const [selectedRank, setSelectedRank] = useState(null);
     const [percentage, setPercentage] = useState('');
+    const [ranks, setRanks] = useState([]);
+
+    useEffect(() => {
+        const fetchRanks = async () => {
+            const { data, error } = await supabase
+                .from('ranks')
+                .select('id, rank');
+
+            if (error) {
+                console.log('Error fetching ranks:', error);
+            } else {
+                setRanks(data.map(rank => ({value: rank.rank.toLowerCase(), label: rank.rank})));
+            }
+        };
+
+        fetchRanks();
+    }, []);
 
     const title = "Rank Select: " + role;
 
@@ -72,7 +89,12 @@ const RankSelect = () => {
             </div>
             <div className={styles.pageContent}>
                 <div className={styles.rankInput}>
-                    <RankDropdown onChange={handleRankChange} />
+                    <Dropdown
+                        options={ranks} 
+                        onChange={handleRankChange}
+                        placeholder='Select Rank'
+                        value={selectedRank}
+                    />
                     <PercentageInput value={percentage} onChange={handlePercentageChange} />
                     <button className={styles.button} onClick={handleSave}>Save</button>
                 </div>

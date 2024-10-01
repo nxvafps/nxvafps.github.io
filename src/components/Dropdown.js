@@ -1,50 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import styles from '../styles/components/Dropdown.module.scss'
+import React from 'react';
+import Select from 'react-select';
+import DropdownIndicator from './DropdownIndicator';
 
-const Dropdown = ({ input, placeholder }) => {
-    const [filter, setFilter] = useState('');
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [showList, setShowList] = useState(false);
+const customStyles = () => ({
+    control: (base, state) => ({
+        ...base,
+        borderRadius: 0,
+        height: 40,
+        width: 200,
+        minHeight: 40,
+        borderColor: state.isFocused ? 'white' : 'white',
+        outline: 'none',
+        boxShadow: 'none',
+        backgroundColor: '#7b7777',
+        color: 'white',
+        '&:hover': {
+            borderColor: state.isFocused ? 'white' : 'white'
+        }
+    }),
+    valueContainer: (base) => ({
+        ...base,
+        height: 40,
+        padding: '0 8px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        textAlign: 'center'
+    }),
+    input: (base) => ({
+        ...base,
+        margin: 0,
+        padding: 0,
+        outline: 'none',
+        boxShadow: 'none',
+        color: 'white',
+        textAlign: 'center'
+    }),
+    singleValue: (base) => ({
+        ...base,
+        color: 'white',
+        textAlign: 'center',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute', 
+        top: '50%', 
+        transform: 'translateY(-50%)'
+    }),
+    indicatorsContainer: (base) => ({
+        ...base,
+        display: 'none',
+    }),
+    option: (base, state) => ({
+        ...base,
+        borderRadius: 0,
+        backgroundColor: state.isSelected ? '#7b7777' : '#7b7777',
+        '&:hover': {
+            backgroundColor: 'white',
+            color: '#7b7777'
+        },
+        color: state.isSelected ? 'white' : 'white',
+        textAlign: 'center'
+    }),
+    placeholder: (base) => ({
+        ...base,
+        color: 'white',
+        textAlign: 'center',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute', 
+        top: '50%', 
+        transform: 'translateY(-50%)'
+    }),
+    menu: (base) => ({
+        ...base,
+        marginTop: 0,
+        marginBottom: 0,
+        backgroundColor: '#7b7777',
+        color: 'white',
+        borderColor: 'white',
+        borderWidth: '1px',
+        borderStyle: 'solid'
+    }),
+    menuList: (base) => ({
+        ...base,
+        paddingTop: 0,
+        paddingBottom: 0,
+        backgroundColor: '#7b7777',
+        color: 'white'
+    })
 
-    const handleInputChange = (e) => {
-        setFilter(e.target.value.toLowerCase());
-        setShowList(true);
-    };
+});
 
-    const handleItemClick = (item) => {
-        setSelectedItem(item);
-        setShowList(false);
-    };
 
-    const filteredItem = input.filter(item => item.name.toLowerCase().includes(filter));
+const Dropdown = ({ options, onChange, placeholder, value }) => (
+    <Select 
+        options={options} 
+        onChange={onChange} 
+        placeholder= {placeholder}
+        isSearchable 
+        styles={customStyles()}
+        value={value}
+        />
+);
 
-    return (
-        <section className={styles.select}>
-            <section className={styles.search}>
-                {selectedItem ? (
-                    <p className={styles.text} onClick={() => setShowList(true)}>{selectedItem.name}</p>
-                ) : (
-                    <input
-                        className={styles.input}
-                        type="text"
-                        placeholder={placeholder}
-                        value={filter}
-                        onChange={handleInputChange}
-                        onFocus={() => setShowList(true)}
-                    />
-                )}
-            </section>
-            {showList && (
-                <ul className={styles.list}>
-                    {filteredItems.map((item, index) => (
-                        <li className={styles.listItem} key={index} onClick={() => handleMapClick(item)}>
-                            {item.name}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </section>
-    );
-};
-
-export default MapSelect;
+export default Dropdown;
