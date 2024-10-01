@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
-import DropdownIndicator from './DropdownIndicator';
 
-const customStyles = () => ({
+const customStyles = (value) => ({
     control: (base, state) => ({
         ...base,
         borderRadius: 0,
         height: 40,
         width: 200,
         minHeight: 40,
-        borderColor: state.isFocused ? 'white' : 'white',
+        borderColor: state.isFocused || !value ? '#ffffff' : 'transparent',
         outline: 'none',
         boxShadow: 'none',
         backgroundColor: '#7b7777',
-        color: 'white',
+        color: '#ffffff',
         '&:hover': {
-            borderColor: state.isFocused ? 'white' : 'white'
+            borderColor: '#ffffff'
         }
     }),
     valueContainer: (base) => ({
@@ -25,7 +24,7 @@ const customStyles = () => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'white',
+        color: '#ffffff',
         textAlign: 'center'
     }),
     input: (base) => ({
@@ -34,12 +33,17 @@ const customStyles = () => ({
         padding: 0,
         outline: 'none',
         boxShadow: 'none',
-        color: 'white',
-        textAlign: 'center'
+        color: '#ffffff',
+        textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        textAlignLast: 'center'
     }),
     singleValue: (base) => ({
         ...base,
-        color: 'white',
+        color: '#ffffff',
         textAlign: 'center',
         width: '100%',
         height: '100%',
@@ -54,20 +58,20 @@ const customStyles = () => ({
         ...base,
         display: 'none',
     }),
-    option: (base, state) => ({
+    option: (base) => ({
         ...base,
         borderRadius: 0,
-        backgroundColor: state.isSelected ? '#7b7777' : '#7b7777',
+        backgroundColor: '#7b7777',
         '&:hover': {
-            backgroundColor: 'white',
+            backgroundColor: '#ffffff',
             color: '#7b7777'
         },
-        color: state.isSelected ? 'white' : 'white',
+        color: '#ffffff',
         textAlign: 'center'
     }),
     placeholder: (base) => ({
         ...base,
-        color: 'white',
+        color: '#ffffff',
         textAlign: 'center',
         width: '100%',
         height: '100%',
@@ -78,13 +82,13 @@ const customStyles = () => ({
         top: '50%', 
         transform: 'translateY(-50%)'
     }),
-    menu: (base) => ({
+    menu: (base, state) => ({
         ...base,
         marginTop: 0,
         marginBottom: 0,
         backgroundColor: '#7b7777',
-        color: 'white',
-        borderColor: 'white',
+        color: '#ffffff',
+        borderColor: state.isFocused || !value ? '#ffffff' : 'transparent',
         borderWidth: '1px',
         borderStyle: 'solid'
     }),
@@ -93,21 +97,41 @@ const customStyles = () => ({
         paddingTop: 0,
         paddingBottom: 0,
         backgroundColor: '#7b7777',
-        color: 'white'
+        color: '#ffffff'
     })
-
 });
 
 
-const Dropdown = ({ options, onChange, placeholder, value }) => (
-    <Select 
-        options={options} 
-        onChange={onChange} 
-        placeholder= {placeholder}
-        isSearchable 
-        styles={customStyles()}
-        value={value}
+const Dropdown = ({ options, onChange, placeholder, value }) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (input) => {
+        setInputValue(input);
+        
+        const matchedOption = options.find(option => option.label.toLowerCase() === input.toLowerCase());
+        if (matchedOption) {
+            onChange(matchedOption);
+            setTimeout(() => document.activeElement.blur(), 0);
+        }
+    };
+
+    const handleChange = (selectedOption) => {
+        onChange(selectedOption);
+        setTimeout(() => document.activeElement.blur(), 0);
+    };
+
+    return (
+        <Select 
+            options={options} 
+            onChange={handleChange}
+            onInputChange={handleInputChange} 
+            placeholder= {placeholder}
+            isSearchable 
+            styles={customStyles(!!value)}
+            value={value}
+            inputValue={inputValue}
         />
-);
+    )
+};
 
 export default Dropdown;
