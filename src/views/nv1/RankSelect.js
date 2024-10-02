@@ -94,6 +94,8 @@ const RankSelect = () => {
                         onChange={handleRankChange}
                         placeholder='Select Rank'
                         value={selectedRank}
+                        height={40}
+                        width={200}
                     />
                     <NumberInput 
                         value={percentage} 

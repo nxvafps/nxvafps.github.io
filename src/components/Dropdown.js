@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const customStyles = (value) => ({
+const customStyles = (value, height, width) => ({
     control: (base, state) => ({
         ...base,
         borderRadius: 0,
-        height: 40,
-        width: 200,
-        minHeight: 40,
+        height: height,
+        width: width,
+        minHeight: height,
         borderColor: state.isFocused || !value ? '#ffffff' : 'transparent',
         outline: 'none',
         boxShadow: 'none',
@@ -19,7 +19,8 @@ const customStyles = (value) => ({
     }),
     valueContainer: (base) => ({
         ...base,
-        height: 40,
+        height: height,
+        width: width,
         padding: '0 8px',
         display: 'flex',
         alignItems: 'center',
@@ -102,7 +103,7 @@ const customStyles = (value) => ({
 });
 
 
-const Dropdown = ({ options, onChange, placeholder, value }) => {
+const Dropdown = ({ options, onChange, placeholder, value, height = 40, width = 200 }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (input) => {
@@ -129,7 +130,7 @@ const Dropdown = ({ options, onChange, placeholder, value }) => {
             isSearchable
             tabSelectsValue
             escapeClearsValue
-            styles={customStyles(!!value)}
+            styles={customStyles(!!value, height, width)}
             value={value}
             inputValue={inputValue}
         />
