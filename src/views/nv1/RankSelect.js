@@ -104,8 +104,8 @@ const RankSelect = () => {
                         minValue = {0}
                         maxValue = {99}
                         maxDigits = {2}
-                        height = '40px'
-                        width = '200px'
+                        height = {40}
+                        width = {200}
                     />
                     <button className={styles.button} onClick={handleSave}>Save</button>
                 </div>
