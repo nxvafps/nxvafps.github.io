@@ -3,7 +3,7 @@ import styles from '../../styles/views/nv1/RankSelect.module.scss';
 import Nv1Context from "../../context/Nv1Context";
 import PageTitle from "../../components/PageTitle";
 import Dropdown from "../../components/Dropdown";
-import PercentageInput from "../../components/nv1/PercentageInput";
+import NumberInput from "../../components/NumberInput";
 import supabase from "../../config/supabaseClient";
 import { calculateRankNumber } from "../../utility/nv1/rankUtils";
 
@@ -95,7 +95,14 @@ const RankSelect = () => {
                         placeholder='Select Rank'
                         value={selectedRank}
                     />
-                    <PercentageInput value={percentage} onChange={handlePercentageChange} />
+                    <NumberInput 
+                        value={percentage} 
+                        onChange={handlePercentageChange}
+                        placeholder='Enter Percentage'
+                        minValue = '0'
+                        maxValue = '99'
+                        maxDigits = '2'
+                    />
                     <button className={styles.button} onClick={handleSave}>Save</button>
                 </div>
             </div>
