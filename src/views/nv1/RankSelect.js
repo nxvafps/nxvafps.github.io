@@ -99,9 +99,11 @@ const RankSelect = () => {
                         value={percentage} 
                         onChange={handlePercentageChange}
                         placeholder='Enter Percentage'
-                        minValue = '0'
-                        maxValue = '99'
-                        maxDigits = '2'
+                        minValue = {0}
+                        maxValue = {99}
+                        maxDigits = {2}
+                        height = '40px'
+                        width = '200px'
                     />
                     <button className={styles.button} onClick={handleSave}>Save</button>
                 </div>

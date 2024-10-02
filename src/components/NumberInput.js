@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/components/NumberInput.module.scss';
 
-const NumberInput = ({ value, onChange, placeholder, minValue, maxValue, maxDigits }) => {
+const NumberInput = ({ value, onChange, placeholder, minValue, maxValue, maxDigits, height = '40px', width = '200px' }) => {
     const [hasValue, setHasValue] = useState(!!value);
 
     const handleChange = (e) => {
@@ -26,6 +26,7 @@ const NumberInput = ({ value, onChange, placeholder, minValue, maxValue, maxDigi
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
+            style={{ height, width }}
         />
     );
 };
