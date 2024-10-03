@@ -1,7 +1,7 @@
 import React from "react";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 
 //Styles
 import styles from "./TermsOfService.module.scss";
@@ -10,7 +10,7 @@ import styles from "./TermsOfService.module.scss";
 const TermsOfService = () => {
     return (
         <>
-            <PageTitle text={'Terms of Service'} />
+            <Title text={'Terms of Service'} />
             <div className={styles.termsContainer}>
                 <p className={styles.terms}>
                     <strong>Effective Date: 16/09/2024</strong><br /><br />

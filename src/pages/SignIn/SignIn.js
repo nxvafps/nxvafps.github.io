@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 
 //Config
 import supabase from "../../config/supabaseClient";
@@ -95,7 +95,7 @@ const SignIn = () => {
     }
     return (
         <div>
-            <PageTitle text={'Sign In'} />
+            <Title text={'Sign In'} />
             <div className={styles.inputContainer}>
                 <input
                     className={styles.input}

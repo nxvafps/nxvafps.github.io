@@ -1,12 +1,12 @@
 import React from "react";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 
 
 const Socials = () => {
     return (
-        <PageTitle text='Socials' />
+        <Title text='Socials' />
     )
 }
 

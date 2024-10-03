@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
-import Dropdown from "../../../../components/Select/Select";
-import NumberInput from "../../../../components/NumberInput/NumberInput";
+import { Title } from "../../../../components/Titles/Titles";
+import { Button, Dropdown, NumberInput } from "../../../../components/Inputs/Inputs";
 
 //Configs
 import supabase from "../../../../config/supabaseClient";
@@ -93,9 +92,9 @@ const RankSelect = () => {
     return (
         <div>
             <div className={styles.titleContainer}>
-                <button className={styles.backButton} onClick={() => setCurrentView('roleSelect')}>Back</button>
+                <Button margin="20px 0 0 0" text='Back' onClick={() => setCurrentView('roleSelect')} />
                 <div className={styles.title}>
-                    <PageTitle text={title}/>
+                    <Title text={title}/>
                 </div>
             </div>
             <div className={styles.pageContent}>
@@ -115,10 +114,10 @@ const RankSelect = () => {
                         minValue = {0}
                         maxValue = {99}
                         maxDigits = {2}
-                        height = {40}
-                        width = {200}
+                        height = '40px'
+                        width = '200px'
                     />
-                    <button className={styles.button} onClick={handleSave}>Save</button>
+                    <Button width='200px' text='Save' onClick={handleSave} />
                 </div>
             </div>
         </div>

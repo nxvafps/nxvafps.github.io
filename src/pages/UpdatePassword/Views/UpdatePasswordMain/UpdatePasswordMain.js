@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
 
 //Context
 import UpdatePasswordContext from '../../../../contexts/UpdatePasswordContext';
@@ -66,7 +66,7 @@ const UpdatePasswordMain = () => {
     }
     return(
         <div className={styles.pageContent}>
-            <PageTitle text='Update Password' />
+            <Title text='Update Password' />
             <p className={styles.text}>Enter your new password below.</p>
 
             <input

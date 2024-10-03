@@ -14,28 +14,6 @@
     text-align: center;
 }
 
-.backButton {
-    outline: none;
-    border: none;
-    width: 75px;
-    max-width: 75px;
-    height: 40px;
-    color: #7b7777;
-    background-color: #ffffff;
-    text-align: center;
-    font-size: 20px;
-    margin: 20px 0 0 0;
-
-    &:hover {
-        background-color: #434343;
-        color: #ffffff;
-    }
-
-    &:focus {
-        outline: none;
-    }
-}
-
 .pageContent {
     display: flex;
     align-items: center;

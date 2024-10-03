@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 import PortfolioLink from "../../components/PortfolioLink/PortfolioLink";
 
 //Config
@@ -37,7 +37,7 @@ const Portfolio = () => {
 
     return (
         <div>
-            <PageTitle text='Portfolio' />
+            <Title text='Portfolio' />
             {fetchError && (<p>{fetchError}</p>)}
             {projects && (
                 <div className={styles.projectContainer}>

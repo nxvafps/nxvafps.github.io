@@ -6,7 +6,8 @@ import dps from '../../../../assets/images/nv1/roles/dps.png';
 import support from '../../../../assets/images/nv1/roles/support.png';
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
+import { Button } from "../../../../components/Inputs/Inputs";
 import RankDisplay from "../../../../components/nv1/RankDisplay/RankDisplay";
 
 //Contexts
@@ -37,20 +38,21 @@ const RoleSelect = () => {
     return (
         <div>
             <div className={styles.titleContainer}>
-                <button className={styles.backButton} onClick={() => setCurrentView('home')}>Back</button>
+                <Button margin="20px 0 0 0" text='Back' onClick={() => setCurrentView('home')} />
                 <div className={styles.title}>
-                    <PageTitle text='Role Select'/>
+                    <Title text='Role Select'/>
                 </div>
             </div>
             <div className={styles.pageContent}>
                 <p className={styles.text}>Select a role you would like to track games for:</p>
                 <div className={styles.roleIcons}>
+
                     <div className={styles.tank}>
                         <div className={styles.tankButton} onClick={() => handleRoleSelect('tank', tankRank)}>
                             <img src={tank} alt="tankIcon" />
                             <RankDisplay value={tankRank} />
                         </div>
-                        <button className={styles.changeRank} onClick={() => handleChangeRank('tank')}>Change Rank</button>
+                        <Button margin="5px 0 0 0" fontSize="15px" text='Change Rank' onClick={() => handleChangeRank('tank')} />
                     </div>
 
                     <div className={styles.dps}>
@@ -58,15 +60,17 @@ const RoleSelect = () => {
                             <img src={dps} alt='dpsIcon' />
                             <RankDisplay value={dpsRank} />
                         </div>
-                        <button className={styles.changeRank} onClick={() => handleChangeRank('dps')}>Change Rank</button>
+                        <Button margin="5px 0 0 0" fontSize="15px" text='Change Rank' onClick={() => handleChangeRank('dps')} />
                     </div>
+
                     <div className={styles.support}>
                         <div className={styles.supportButton} onClick={() => handleRoleSelect('support', supportRank)}>
                             <img src={support} alt='supportIcon' />
                             <RankDisplay value={supportRank} />
                         </div>
-                        <button className={styles.changeRank} onClick={() => handleChangeRank('support')}>Change Rank</button>
+                        <Button margin="5px 0 0 0" fontSize="15px" text='Change Rank' onClick={() => handleChangeRank('support')} />
                     </div>
+                    
                 </div>
             </div>
         </div>

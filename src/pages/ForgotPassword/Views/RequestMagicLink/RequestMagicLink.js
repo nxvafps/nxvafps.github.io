@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
 
 //Config
 import supabase from "../../../../config/supabaseClient";
@@ -65,7 +65,7 @@ const RequestMagicLink = () => {
 
     return (
         <div className={styles.pageContent}>
-            <PageTitle text={'Forgot Password'} />
+            <Title text={'Forgot Password'} />
             <p className={styles.text}>Please enter your email below to get a password reset email.</p>
             <input
                 className={styles.input}

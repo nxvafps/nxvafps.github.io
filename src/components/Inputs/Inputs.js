@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
+import styles from './Inputs.module.scss';
+
 const customStyles = (value, height, width) => ({
     control: (base, state) => ({
         ...base,
@@ -102,8 +104,20 @@ const customStyles = (value, height, width) => ({
     })
 });
 
+export const Button = ({ height = '40px', width = '75px', fontSize='20px', margin = '0 0 0 0', text, onClick}) => {
+    return (
+        <button 
+            className={styles.button}
+            onClick={onClick}
+            style={{height: height, width: width, maxWidth: width, fontSize: fontSize, margin: margin}}
+        >
+            { text }
+        </button>
+                    
+    )
+}
 
-const Dropdown = ({ options, onChange, placeholder, value, height = 40, width = 200 }) => {
+export const Dropdown = ({ options, onChange, placeholder, value, height = 40, width = 200 }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (input) => {
@@ -137,4 +151,46 @@ const Dropdown = ({ options, onChange, placeholder, value, height = 40, width = 
     )
 };
 
-export default Dropdown;
+export const TextInput = ({ value, onChange, placeholder='Enter Text', height = '40px', width = '200px' }) => {
+    const hasValue = useState(!!value);
+    return (
+        <input
+            type='text'
+            className={`${styles.numberInput} ${hasValue ? styles.hasValue : ''}`}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            style={{ height: height, width: width}}
+        />
+    )
+}
+
+export const NumberInput = ({ value, onChange, placeholder, minValue, maxValue, maxDigits, height = '40px', width = '200px' }) => {
+    const [hasValue, setHasValue] = useState(!!value);
+
+    const handleChange = (e) => {
+        const newValue = e.target.value;
+
+        if (newValue === '' || (newValue >= minValue && newValue <= maxValue && newValue.length <= maxDigits)) {
+                setHasValue(!!newValue);
+                onChange(e);
+
+                if (newValue.length === maxDigits) {
+                    e.target.blur();
+                }
+        }
+    };
+    
+    return (
+        <input
+            type="number"
+            className={`${styles.numberInput} ${hasValue ? styles.hasValue : ''}`}
+            min={minValue}
+            max={maxValue}
+            value={value}
+            onChange={handleChange}
+            placeholder={placeholder}
+            style={{ height: height, width: width }}
+        />
+    );
+};

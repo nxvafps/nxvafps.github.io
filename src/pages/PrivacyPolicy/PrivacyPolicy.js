@@ -1,7 +1,7 @@
 import React from "react";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 
 //Styles
 import styles from './PrivacyPolicy.module.scss';
@@ -10,7 +10,7 @@ import styles from './PrivacyPolicy.module.scss';
 const PrivacyPolicy = () => {
     return (
         <>
-            <PageTitle text={'Privacy Policy'} />
+            <Title text={'Privacy Policy'} />
             <div className={styles.policyContainer}>
                 <p className={styles.policy}>
                     <strong>Effective Date: 16/09/2024</strong><br /><br />

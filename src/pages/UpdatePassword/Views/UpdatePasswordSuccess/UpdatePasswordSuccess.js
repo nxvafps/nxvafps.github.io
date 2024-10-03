@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
 
 //Styles
 import styles from './UpdatePasswordSuccess.module.scss';
@@ -16,7 +16,7 @@ const SuccessfulPasswordReset = () => {
     }
     return(
         <>
-            <PageTitle text={'Success!'} />
+            <Title text={'Success!'} />
             <div className={styles.pageContent}>
                 <p className={styles.text}>
                     You have successfully reset your password, you can navigate back to your account using the button below.

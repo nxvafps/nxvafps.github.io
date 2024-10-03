@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import banner from '../../assets/icons/novaBanner.png';
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
-import PageSubtitle from "../../components/PageSubtitle/PageSubtitle";
+import { Title, Subtitle } from "../../components/Titles/Titles";
 import YoutubeEmbed from "../../components/YoutubeEmbed/YoutubeEmbed";
 import PortfolioLink from "../../components/PortfolioLink/PortfolioLink";
 
@@ -46,14 +45,14 @@ const Home = () => {
     return (
         <>
             <img className={styles.banner} src={banner} alt="nova banner" />
-            <PageTitle text='Welcome' />
+            <Title text='Welcome' />
             <div className={styles.intro}>
                 Here you'll find my web development portfolio showcasing the projects I have completed, along with the ones I'm currently working on!
                 But that's not all! I am also using this space to celebrate my love of gaming. Explore my content from youtube, twitter, and tiktok and join me on my adventures!
                 tay a while, explore, and let’s create something amazing together!
             </div>
             <div className={styles.skillShowcase}>
-                <PageSubtitle textAlign="left" text='Current Project' underline />
+                <Subtitle textAlign="left" text='Current Project' underline />
                 {fetchError && (<p>{fetchError}</p>)}
                 {projects && (
                     <div className="projectContainer">
@@ -62,7 +61,7 @@ const Home = () => {
                         ))}
                     </div>
                 )}
-                <PageSubtitle textAlign="left" text='Latest Upload' underline />
+                <Subtitle textAlign="left" text='Latest Upload' underline />
                 <YoutubeEmbed />
             </div>
         </>

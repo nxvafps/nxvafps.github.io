@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
 
 //Configs
 import supabase from "../../../../config/supabaseClient";
@@ -33,7 +33,7 @@ const SignUpSuccess = () => {
 
     return (
         <div className={styles.pageContent}>
-            <PageTitle text={'Success!'} />
+            <Title text={'Success!'} />
             <p className={styles.text}>Please check your emails for a button to confirm your account!<br /> The button will only work for 10 minutes and then you will need to request another email!</p>
             <div className={styles.buttonContainer}>
                 <button className={styles.button} onClick={resendEmail}>Resend email</button>

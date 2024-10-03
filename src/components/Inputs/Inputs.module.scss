@@ -1,4 +1,5 @@
-.numberInput {
+.input {
+    box-sizing: border-box;
     text-align: center;
     border:none;
     outline:none;
@@ -25,8 +26,25 @@
         }
 }
 
-.numberInput::-webkit-inner-spin-button,
-.numberInput::-webkit-outer-spin-button {
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.button {
+    outline: none;
+    border: none;
+    color: #7b7777;
+    background-color: #ffffff;
+    text-align: center;
+
+    &:hover {
+        background-color: #434343;
+        color: #ffffff;
+    }
+
+    &:focus {
+        outline: none;
+    }
 }

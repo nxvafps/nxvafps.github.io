@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
+import { Title } from "../../components/Titles/Titles";
 import NavButton from "../../components/NavButton/NavButton";
 
 //Configs
@@ -70,7 +70,7 @@ const Nv1 = () => {
     if(!user) {
         return (
             <div>
-                <PageTitle text='You need to sign in to access this project' />
+                <Title text='You need to sign in to access this project' />
                 <div className={styles.buttonContainer}>
                     <NavButton text="Sign Up" href="/signUp" />
                     <NavButton text="Login" href="/login" />

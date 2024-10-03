@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
+import { Button } from '../../../../components/Inputs/Inputs';
 
 //Contexts
 import Nv1Context from "../../../../contexts/Nv1Context";
@@ -14,11 +15,11 @@ const Home = () => {
     const { setCurrentView } = useContext(Nv1Context);
     return (
         <div>
-            <PageTitle text='Overwatch Tools'/>
+            <Title text='Overwatch Tools'/>
             <div className={styles.pageContent}>
                 <p className={styles.text}>Press the track games button to track a new game</p>
                 <div className={styles.buttonContainer}>
-                    <button className={styles.button} onClick={() => setCurrentView('roleSelect')}>Track game</button>
+                    <Button width="300px" text='Track Games' onClick={() => setCurrentView('roleSelect')} />
                 </div>
             </div>
         </div>

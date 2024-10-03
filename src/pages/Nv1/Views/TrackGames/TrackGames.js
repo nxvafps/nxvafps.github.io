@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 
 //Components
-import PageTitle from "../../../../components/PageTitle/PageTitle";
+import { Title } from "../../../../components/Titles/Titles";
+import { Button } from '../../../../components/Inputs/Inputs';
 import RankDisplay from "../../../../components/nv1/RankDisplay/RankDisplay";
 
 //Config
@@ -99,9 +100,9 @@ const TrackGames = () => {
     return (
         <div>
             <div className={styles.titleContainer}>
-                <button className={styles.backButton} onClick={() => setCurrentView('roleSelect')}>Back</button>
+                <Button margin="20px 0 0 0" text='Back' onClick={() => setCurrentView('roleSelect')} />
                 <div className={styles.title}>
-                    <PageTitle text='Track Game'/>
+                    <Title text='Track Game'/>
                 </div>
             </div>
             <div className={styles.pageContent}>       

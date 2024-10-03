@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Components
-import PageTitle from "../../components/PageTitle/PageTitle";
-import PageSubtitle from "../../components/PageSubtitle/PageSubtitle";
+import { Title, Subtitle } from "../../components/Titles/Titles";
+import { Button, TextInput } from '../../components/Inputs/Inputs';
 
 //Configs
 import supabase from "../../config/supabaseClient";
@@ -86,24 +86,18 @@ const Account = () => {
 
     return (
         <div className={styles.account}>
-            <PageTitle text={'Account'} />
+            <Title text={'Account'} />
             {displayName ? (
-                <PageSubtitle text={`Hello, ${displayName}!`} />
+                <Subtitle text={`Hello, ${displayName}!`} />
             ) : (
                 <div className={styles.inputContainer}>
-                    <PageSubtitle text={'Please choose a username'} />
-                    <input
-                        className={styles.input}
-                        type="text"
-                        placeholder={'User Name'}
-                        value={newDisplayName}
-                        onChange={(e) => setNewDisplayName(e.target.value)}
-                    />
-                    <button className={styles.button} onClick={handleSetDisplayName}>Set</button>
+                    <Subtitle text={'Please choose a username'} />
+                    <TextInput width="300px" placeholder="Username" value={newDisplayName} onChange={(e) => setNewDisplayName(e.target.value)} />
+                    <Button width="300px" text='Set Username' onClick={handleSetDisplayName} />
                 </div>
             )}
-            <button className={styles.button} onClick={resetPassword}>Reset Password</button>
-            <button className={styles.button} onClick={logout}>Log out</button>
+            <Button width="300px" text='Reset Password' onClick={resetPassword} />
+            <Button width="300px" text='Log Out' onClick={logout} />
             <div className="errorContainer">
                 {errorMessage && <div className={styles.error}><p>{errorMessage}</p></div>}
             </div>
