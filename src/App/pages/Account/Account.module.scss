@@ -1,0 +1,23 @@
+.account{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 300px;
+    gap:20px;
+    .errorContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #630609;
+        .error {
+            display: inline;
+            color: #000000;
+        }
+    }
+}
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
