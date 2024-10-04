@@ -5,15 +5,15 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "../../components/Layout/Layout"
 
 //Pages
-import Home from "../../pages/Home/Home";
-import Portfolio from "../../pages/Portfolio/Portfolio";
+import Home from "../../App/pages/Home/Home";
+import Portfolio from "../../App/pages/Portfolio/Portfolio";
 import Nv1 from "../../pages/Nv1/Nv1";
-import Socials from "../../pages/Socials/Socials";
-import Account from "../../pages/Account/Account";
-import SignIn from "../../pages/SignIn/SignIn";
+import Socials from "../../App/pages/Socials/Socials";
+import Account from "../../App/pages/Account/Account";
+import SignIn from "../../App/pages/SignIn/SignIn";
 import SignUp from "../../pages/SignUp/SignUp";
-import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy";
-import TermsOfService from "../../pages/TermsOfService/TermsOfService";
+import PrivacyPolicy from "../../App/pages/PrivacyPolicy/PrivacyPolicy";
+import TermsOfService from "../../App/pages/TermsOfService/TermsOfService";
 import ForgotPassword from "../../pages/ForgotPassword/ForgotPassword";
 import UpdatePassword from "../../pages/UpdatePassword/UpdatePassword";
 
