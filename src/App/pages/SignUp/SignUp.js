@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Title } from "../../../../components/Titles/Titles";
-import useSignUp from "./Hooks/useSignUp";
+import { Button } from "../../../components/Inputs/Inputs";
+import useSignUp from "./Hooks";
 import styles from './SignUp.module.scss';
 
 const SignUp = () => {
@@ -99,7 +100,7 @@ const SignUp = () => {
                     )}
 
                     <div className={styles.buttonContainer}>
-                        <button className={styles.button} onClick={signUp}>Sign Up</button>
+                        <Button width="300px" text='Sign Up' onClick={signUp} />
                     </div>
 
                     {errorMessage && <div className={styles.errorContainer}><p className={styles.error}>{errorMessage}</p></div>}
