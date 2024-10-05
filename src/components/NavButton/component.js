@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //Styles
-import styles from './NavButton.module.scss';
+import styles from './style';
 
 
 const NavButton = ({text, href, onClick}) => {
     return (
-        <Link className={styles.navLink} to={href} onClick={onClick}>{text}</Link>
+        <Link className={styles.navButton} to={href} onClick={onClick}>{text}</Link>
     );
 }
 
