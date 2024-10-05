@@ -1,17 +1,18 @@
 import React from "react";
 
-import styles from './styles';
+import StyledButton from './styles';
 
-const Button = ({ height = '40px', width = '75px', fontSize='20px', margin = '0 0 0 0', text, onClick}) => {
+const Button = ({ height, width, fontSize, margin, text, onClick}) => {
     return (
-        <button 
-            className={styles.button}
+        <StyledButton
+            height={height}
+            width={width}
+            fontSize={fontSize}
+            margin={margin}
             onClick={onClick}
-            style={{height: height, width: width, maxWidth: width, fontSize: fontSize, margin: margin}}
-        >
-            { text }
-        </button>
-                    
+            >
+            {text}
+        </StyledButton>            
     )
 }
 
