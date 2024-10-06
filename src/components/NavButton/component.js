@@ -1,12 +1,12 @@
 import React from "react";
 
 //Styles
-import StyledNavlink from './style';
+import StyledNavButton from './style';
 
 
 const NavButton = ({text, href, onClick}) => {
     return (
-        <StyledNavlink to={href} onClick={onClick}>{text}</StyledNavlink>
+        <StyledNavButton to={href} onClick={onClick}>{text}</StyledNavButton>
     );
 }
 

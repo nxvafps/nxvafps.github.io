@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const StyledNavlink = styled(Link)`
+const StyledNavButton = styled(Link)`
     font-size: 20px;
     text-decoration: none;
     padding: 10px;
@@ -15,4 +15,4 @@ const StyledNavlink = styled(Link)`
     }
 `;
 
-export default StyledNavlink;
+export default StyledNavButton;
