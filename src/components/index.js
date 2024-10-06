@@ -6,3 +6,4 @@ export * from './InputNumber';
 export * from './InputText';
 export * from './NavButton';
 export * from './Footer';
+export * from './PortfolioLink';
