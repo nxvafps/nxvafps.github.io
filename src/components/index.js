@@ -5,3 +5,4 @@ export * from './InputDropdown';
 export * from './InputNumber';
 export * from './InputText';
 export * from './NavButton';
+export * from './Footer';
