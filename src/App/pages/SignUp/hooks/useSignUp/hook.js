@@ -1,5 +1,5 @@
 import { useState } from "react";
-import supabase from "../../../../../config/supabaseClient";
+import supabase from "../../../../../config";
 import * as Utils from "../utils";
 
 const useSignUp = () => {

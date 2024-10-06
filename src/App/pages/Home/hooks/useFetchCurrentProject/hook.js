@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import supabase from '../../../config/supabaseClient';
+import supabase from '../../../config';
 
 const useFetchCurrentProject = () => {
     const [fetchError, setFetchError] = useState(null);

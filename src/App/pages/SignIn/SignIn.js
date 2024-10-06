@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Title } from "../../../components/Titles/Titles";
 
 //Config
-import supabase from "../../../config/supabaseClient";
+import supabase from "../../../config";
 
 //Styles
 import styles from './SignIn.module.scss';

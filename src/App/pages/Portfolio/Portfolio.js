@@ -5,7 +5,7 @@ import { Title } from "../../../components/Titles/Titles";
 import PortfolioLink from "../../../components/PortfolioLink/PortfolioLink";
 
 //Config
-import supabase from "../../../config/supabaseClient";
+import supabase from "../../../config";
 
 //Styles
 import styles from './Portfolio.module.scss';
