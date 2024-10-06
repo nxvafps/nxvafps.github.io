@@ -4,8 +4,7 @@ import React from "react";
 import banner from './assets';
 
 //Components
-import { Title, Subtitle, PortfolioLink } from "../../../components";
-import YoutubeEmbed from "../../../components/YoutubeEmbed/YoutubeEmbed";
+import { Title, Subtitle, PortfolioLink, YoutubeEmbed } from "../../../components";
 
 //Hooks
 import { useFetchCurrentProject } from "./hooks";
