@@ -1,17 +1,18 @@
-const styles = {
-    navButton: {
-        fontSize: '20px',
-        textDecoration: 'none',
-        padding: '10px',
-        backgroundColor: '#434343',
-        color: '#ffffff',
-        width: '100%',
-        textAlign: 'center',
-        '&:hover': {
-            backgroundColor: '#ffffff',
-            color: '#434343',
-        },
-    },
-};
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export default styles;
+const StyledNavlink = styled(Link)`
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #434343;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    &:hover {
+        background-color: #ffffff;
+        color: #434343;
+    }
+`;
+
+export default StyledNavlink;
