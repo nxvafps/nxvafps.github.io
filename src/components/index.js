@@ -7,3 +7,4 @@ export * from './InputText';
 export * from './NavButton';
 export * from './Footer';
 export * from './PortfolioLink';
+export * from './YoutubeEmbed';
