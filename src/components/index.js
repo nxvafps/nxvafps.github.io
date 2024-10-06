@@ -10,3 +10,4 @@ export * from './PortfolioLink';
 export * from './YoutubeEmbed';
 export * from './DesktopNavigation';
 export * from './MobileNavigation';
+export * from './SideMenu';
