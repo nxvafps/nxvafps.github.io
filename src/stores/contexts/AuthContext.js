@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import supabase from "../../config";
 
 const AuthContext = createContext();
@@ -7,14 +8,17 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const session = supabase.auth.session();
     setUser(session?.user ?? null);
 
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
 
     return () => {
       authListener?.unsubscribe();
@@ -25,11 +29,13 @@ const AuthProvider = ({ children }) => {
     const { user, error } = await supabase.auth.signIn({ email, password });
     if (error) throw error;
     setUser(user);
+    navigate("/account");
   };
 
   const signOut = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    navigate("/");
   };
 
   return (
