@@ -1,164 +1,76 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //Components
-import { Title } from "../../../components/Titles/Titles";
+import { Title } from "../../../components";
 
-//Config
-import supabase from "../../../config";
-
-//Context
-import { useAuth } from "../../../stores/contexts";
+//Hooks
+import { useAuthHandler } from "./hooks";
 
 //Styles
-import styles from "./SignIn.module.scss";
+import {
+  InputContainer,
+  Input,
+  Button,
+  ErrorContainer,
+  Error,
+  Text,
+  Messages,
+  SpecificErrorContainer,
+  SpecificError,
+} from "./styles";
 
 const SignIn = () => {
   const [identifier, setIdentifier] = useState("");
-  const [identifierError, setIdentifierError] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const { signIn } = useAuth();
-  const navigate = useNavigate();
+  const { identifierError, passwordError, errorMessage, Login } =
+    useAuthHandler();
 
-  const Login = async () => {
-    setIdentifierError("");
-    setPasswordError("");
-    setErrorMessage("");
-
-    if (!identifier && !password) {
-      setErrorMessage("Please enter a Username/Email and a password.");
-      return;
-    } else if (!identifier) {
-      setIdentifierError("Please Enter a Username/Email.");
-      return;
-    } else if (!password) {
-      setPasswordError("Please enter a password.");
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailPattern.test(identifier)) {
-      const { data: emailCheck, error: emailCheckError } = await supabase
-        .from("usernames")
-        .select("email")
-        .eq("email", identifier);
-
-      if (emailCheckError) {
-        setErrorMessage("There was an issue checking your details.");
-        return;
-      } else if (emailCheck.length === 0) {
-        setIdentifierError("This email address is not associated with a user.");
-        return;
-      }
-
-      const { error: emailSignInError } =
-        await supabase.auth.signInWithPassword({
-          email: identifier,
-          password: password,
-        });
-
-      if (!emailSignInError) {
-        navigate("/account");
-      } else {
-        setPasswordError("This password is incorrect.");
-        return;
-      }
-    } else {
-      const { data: usernameCheck, error: checkUsernameError } = await supabase
-        .from("usernames")
-        .select("*")
-        .eq("displayName", identifier);
-
-      if (checkUsernameError) {
-        setErrorMessage("There was in issue checking your details.");
-        return;
-      } else if (usernameCheck.length === 0) {
-        setIdentifierError("This username does not exist");
-        return;
-      } else {
-        const email = usernameCheck[0].email;
-
-        const { data: usernameSignInSuccess, error: usernameSignInError } =
-          await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-          });
-
-        if (usernameSignInError) {
-          setErrorMessage("There was an error signing you in");
-          return;
-        } else if (usernameSignInSuccess) {
-          navigate("/account");
-        } else {
-          setPasswordError("This password is incorrect.");
-        }
-      }
-    }
+  const handleSubmit = async () => {
+    await Login(identifier, password);
   };
+
   return (
     <div>
       <Title text={"Sign In"} />
-      <div className={styles.inputContainer}>
-        <input
-          className={styles.input}
+      <InputContainer>
+        <Input
           type="text"
           placeholder={"Username or Email"}
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
         />
-
         {identifierError && (
-          <div className={styles.specificErrorContainer}>
-            <p className={styles.specificError}>{identifierError}</p>
-          </div>
+          <SpecificErrorContainer>
+            <SpecificError>{identifierError}</SpecificError>
+          </SpecificErrorContainer>
         )}
-
-        <input
-          className={styles.input}
+        <Input
           type="password"
           placeholder={"Password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         {passwordError && (
-          <div className={styles.specificErrorContainer}>
-            <p className={styles.specificError}>{passwordError}</p>
-          </div>
+          <SpecificErrorContainer>
+            <SpecificError>{passwordError}</SpecificError>
+          </SpecificErrorContainer>
         )}
-
-        <button onClick={Login} className={styles.button}>
-          Log In
-        </button>
-
+        <Button onClick={handleSubmit}>Log In</Button>
         {errorMessage && (
-          <div className={styles.specificErrorContainer}>
-            <p className={styles.specificError}>{errorMessage}</p>
-          </div>
+          <SpecificErrorContainer>
+            <SpecificError>{errorMessage}</SpecificError>
+          </SpecificErrorContainer>
         )}
-
-        <div className={styles.messages}>
-          <p className={styles.text}>
-            Forgot your password?{" "}
-            <Link className={styles.link} to="/forgotpassword">
-              Click Here!
-            </Link>
-          </p>
-          <p className={styles.text}>
-            Don't have an account?{" "}
-            <Link className={styles.link} to="/signup">
-              Sign Up
-            </Link>
-          </p>
-        </div>
-        {errorMessage && (
-          <div className={styles.errorContainer}>
-            <p className={styles.error}>{errorMessage}</p>
-          </div>
-        )}
-      </div>
+        <Messages>
+          <Text>
+            Forgot your password? <Link to="/forgotpassword">Click Here!</Link>
+          </Text>
+          <Text>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </Text>
+        </Messages>
+      </InputContainer>
     </div>
   );
 };
