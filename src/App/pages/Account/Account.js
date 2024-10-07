@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 //Components
 import { Title, Subtitle, Button, InputText } from "../../../components";
 
+//Contexts
+import { useAuth } from "../../../stores/contexts";
+
+//Hooks
 import {
   useFetchUserData,
   useDisplayNameValidation,
@@ -19,12 +23,13 @@ import {
 } from "./styles";
 
 const Account = () => {
+  const navigate = useNavigate();
+  const { signOut, errorMessage } = useAuth();
   const { displayName, loading } = useFetchUserData();
   const { validateDisplayName } = useDisplayNameValidation();
+  const { handleSetDisplayName } = useSetDisplayName(newDisplayName);
+
   const [newDisplayName, setNewDisplayName] = useState("");
-  const navigate = useNavigate();
-  const { errorMessage, handleSetDisplayName } =
-    useSetDisplayName(newDisplayName);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -56,9 +61,19 @@ const Account = () => {
       <Button
         width="300px"
         text="Reset Password"
-        onClick={navigate("/resetpassword")}
+        onClick={() => navigate("/resetpassword")}
       />
-      <Button width="300px" text="Log Out" onClick={signOut} />
+      <Button
+        width="300px"
+        text="Sign Out"
+        onClick={async () => {
+          try {
+            await signOut();
+          } catch (error) {
+            console.error(error);
+          }
+        }}
+      />
       <ErrorContainer>
         {errorMessage && (
           <Error>
