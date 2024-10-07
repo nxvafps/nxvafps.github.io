@@ -1,8 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Title, Button } from "../../../../components";
-import useSignUp from "./Hooks";
-import styles from "./SignUp.module.scss";
+import { useSignUp, useResendEmail } from "./hooks";
+
+import {
+  Container,
+  Input,
+  CheckboxContainer,
+  Checkbox,
+  Label,
+  ErrorContainer,
+  SuccessContainer,
+  SignIn,
+  SpecificErrorContainer,
+  PageContent,
+  Text,
+  Button,
+  ErrorBox,
+  Error,
+} from "./styles";
 
 const SignUp = () => {
   const {
@@ -23,24 +39,31 @@ const SignUp = () => {
     signUp,
   } = useSignUp();
 
+  const { resendEmail, resendError } = useResendEmail(email);
+
   return (
     <div>
       <Title text={"Sign Up"} />
       {isSubmitted ? (
-        <div className={styles.successMessage}>
-          <p>
-            We have sent you an email with a link to confirm your account. If
-            you have received this, you can close this page. Otherwise, click
-            the button below to send another confirmation link.
-          </p>
-          <button className={styles.button} onClick={signUp}>
-            Resend Confirmation Link
-          </button>
-        </div>
+        <PageContent>
+          <Title text={"Success!"} />
+          <Text>
+            Please check your emails for a button to confirm your account!
+            <br /> The button will only work for 10 minutes and then you will
+            need to request another email!
+          </Text>
+          <div>
+            <Button onClick={resendEmail}>Resend email</Button>
+          </div>
+          {resendError && (
+            <ErrorBox>
+              <Error>{resendError}</Error>
+            </ErrorBox>
+          )}
+        </PageContent>
       ) : (
-        <div className={styles.inputContainer}>
-          <input
-            className={styles.input}
+        <Container>
+          <Input
             type="text"
             placeholder={"User Name"}
             value={displayName}
@@ -48,17 +71,14 @@ const SignUp = () => {
           />
 
           {displayNameError.length > 0 && (
-            <div className={styles.specificErrorContainer}>
+            <SpecificErrorContainer>
               {displayNameError.map((error, index) => (
-                <p key={index} className={styles.specificError}>
-                  {error}
-                </p>
+                <p key={index}>{error}</p>
               ))}
-            </div>
+            </SpecificErrorContainer>
           )}
 
-          <input
-            className={styles.input}
+          <Input
             type="email"
             placeholder={"Email"}
             value={email}
@@ -66,17 +86,14 @@ const SignUp = () => {
           />
 
           {emailError.length > 0 && (
-            <div className={styles.specificErrorContainer}>
+            <SpecificErrorContainer>
               {emailError.map((error, index) => (
-                <p key={index} className={styles.specificError}>
-                  {error}
-                </p>
+                <p key={index}>{error}</p>
               ))}
-            </div>
+            </SpecificErrorContainer>
           )}
 
-          <input
-            className={styles.input}
+          <Input
             type="password"
             placeholder={"Password"}
             value={password}
@@ -84,26 +101,22 @@ const SignUp = () => {
           />
 
           {passwordError.length > 0 && (
-            <div className={styles.specificErrorContainer}>
+            <SpecificErrorContainer>
               {passwordError.map((error, index) => (
-                <p key={index} className={styles.specificError}>
-                  {error}
-                </p>
+                <p key={index}>{error}</p>
               ))}
-            </div>
+            </SpecificErrorContainer>
           )}
 
-          <div className={styles.checkboxContainer}>
-            <input
-              type="checkbox"
-              className={styles.checkbox}
+          <CheckboxContainer>
+            <Checkbox
               id="agree"
               checked={agree}
               onChange={(e) => setAgree(e.target.checked)}
             />
-            <label htmlFor="agree"></label>
+            <Label htmlFor="agree"></Label>
 
-            <p className={styles.label}>
+            <p>
               I agree to the{" "}
               <Link
                 to="/privacypolicy"
@@ -121,38 +134,34 @@ const SignUp = () => {
                 Terms of Service
               </Link>
             </p>
-          </div>
+          </CheckboxContainer>
 
           {agreeError && (
-            <div className={styles.specificErrorContainer}>
-              <p className={styles.specificError}>{agreeError}</p>
-            </div>
+            <SpecificErrorContainer>
+              <p>{agreeError}</p>
+            </SpecificErrorContainer>
           )}
 
-          <div className={styles.buttonContainer}>
+          <div>
             <Button width="300px" text="Sign Up" onClick={signUp} />
           </div>
 
           {errorMessage && (
-            <div className={styles.errorContainer}>
-              <p className={styles.error}>{errorMessage}</p>
-            </div>
+            <ErrorContainer>
+              <p>{errorMessage}</p>
+            </ErrorContainer>
           )}
           {successMessage && (
-            <div className={styles.successContainer}>
-              <p className={styles.success}>{successMessage}</p>
-            </div>
+            <SuccessContainer>
+              <p>{successMessage}</p>
+            </SuccessContainer>
           )}
 
-          <p className={styles.signIn}>
-            Already have an account?{" "}
-            <Link className={styles.signInLink} to="/login">
-              Sign In
-            </Link>
-          </p>
-        </div>
+          <SignIn>
+            Already have an account? <Link to="/login">Sign In</Link>
+          </SignIn>
+        </Container>
       )}
-      ;
     </div>
   );
 };
