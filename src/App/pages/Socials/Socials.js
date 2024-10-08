@@ -1,13 +1,10 @@
 import React from "react";
 
 //Components
-import { Title } from "../../../components/Titles/Titles";
-
+import { Title } from "../../../components";
 
 const Socials = () => {
-    return (
-        <Title text='Socials' />
-    )
-}
+  return <Title text="Socials" />;
+};
 
 export default Socials;
