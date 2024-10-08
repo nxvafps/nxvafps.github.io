@@ -12,8 +12,6 @@ import {
   InputContainer,
   Input,
   Button,
-  ErrorContainer,
-  Error,
   Text,
   Messages,
   SpecificErrorContainer,
