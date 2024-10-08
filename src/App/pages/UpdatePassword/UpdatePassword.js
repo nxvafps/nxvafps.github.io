@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
-const UpdatePassword = () => {
-    
-};
+const UpdatePassword = () => {};
 
 export default UpdatePassword;

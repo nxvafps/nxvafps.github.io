@@ -66,9 +66,36 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const signInWithOtp = async (email) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOtp({
+        email: email,
+        options: {
+          shouldCreateUser: false,
+          emailRedirectTo: "https://novafps.com",
+        },
+      });
+      if (error) {
+        throw error;
+      }
+      return data;
+    } catch (error) {
+      setErrorMessage(error.message);
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, signIn, signOut, signUp, resetPassword, errorMessage }}
+      value={{
+        user,
+        signIn,
+        signOut,
+        signUp,
+        resetPassword,
+        signInWithOtp,
+        errorMessage,
+      }}
     >
       {children}
     </AuthContext.Provider>
