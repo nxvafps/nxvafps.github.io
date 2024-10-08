@@ -46,19 +46,6 @@ export const Button = styled.button`
   }
 `;
 
-export const ErrorContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #630609;
-  height: 40px;
-`;
-
-export const Error = styled.p`
-  display: inline;
-  color: #ffffff;
-`;
-
 export const Text = styled.p`
   text-align: center;
   color: #ffffff;
