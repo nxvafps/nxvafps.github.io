@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 
 //Components
 import { Title, NavButton } from "../../components";
@@ -26,38 +26,58 @@ const Nv1 = () => {
   const [dpsRank, setDpsRank] = useState("");
   const [supportRank, setSupportRank] = useState("");
 
-  const onRanksTable = async (userId) => {
-    const { data: onRankTable } = await supabase
-      .from("user_ranks")
-      .select("user_id")
-      .eq("user_id", userId);
-
-    if (onRankTable.length > 0) {
-      const { data: ranks } = await supabase
-        .from("user_ranks")
-        .select("*")
-        .eq("user_id", userId);
-      setTankRank(ranks[0].tank);
-      setDpsRank(ranks[0].dps);
-      setSupportRank(ranks[0].support);
-    } else {
-      await supabase.from("user_ranks").insert({ user_id: userId });
-    }
-  };
-
   useEffect(() => {
     const fetchUserId = async () => {
       if (user) {
         setUserId(user.id);
-
         if (user.id) {
           await onRanksTable(user.id);
         }
       }
     };
 
+    const onRanksTable = async (userId) => {
+      try {
+        const { data: onRankTable } = await supabase
+          .from("user_ranks")
+          .select("user_id")
+          .eq("user_id", userId);
+
+        if (onRankTable.length > 0) {
+          const { data: ranks } = await supabase
+            .from("user_ranks")
+            .select("*")
+            .eq("user_id", userId);
+          setTankRank(ranks[0].tank);
+          setDpsRank(ranks[0].dps);
+          setSupportRank(ranks[0].support);
+        } else {
+          await supabase.from("user_ranks").insert({ user_id: userId });
+        }
+      } catch (error) {
+        console.error("Error fetching ranks:", error);
+      }
+    };
+
     fetchUserId();
   }, [user]);
+
+  const contextValue = useMemo(
+    () => ({
+      setCurrentView,
+      userId,
+      season,
+      role,
+      setRole,
+      tankRank,
+      setTankRank,
+      dpsRank,
+      setDpsRank,
+      supportRank,
+      setSupportRank,
+    }),
+    [userId, season, role, tankRank, dpsRank, supportRank]
+  );
 
   if (!user) {
     return (
@@ -69,30 +89,16 @@ const Nv1 = () => {
         </ButtonContainer>
       </div>
     );
-  } else {
-    return (
-      <Nv1Context.Provider
-        value={{
-          setCurrentView,
-          userId,
-          season,
-          role,
-          setRole,
-          tankRank,
-          setTankRank,
-          dpsRank,
-          setDpsRank,
-          supportRank,
-          setSupportRank,
-        }}
-      >
-        {currentView === "home" && <Home />}
-        {currentView === "roleSelect" && <RoleSelect />}
-        {currentView === "rankSelect" && <RankSelect />}
-        {currentView === "trackGames" && <TrackGames />}
-      </Nv1Context.Provider>
-    );
   }
+
+  return (
+    <Nv1Context.Provider value={contextValue}>
+      {currentView === "home" && <Home />}
+      {currentView === "roleSelect" && <RoleSelect />}
+      {currentView === "rankSelect" && <RankSelect />}
+      {currentView === "trackGames" && <TrackGames />}
+    </Nv1Context.Provider>
+  );
 };
 
 export default Nv1;

@@ -16,9 +16,9 @@ import {
   TitleContainer,
   PageContent,
   Text,
-  Tank,
-  Dps,
-  Support,
+  TankRole,
+  DpsRole,
+  SupportRole,
   TankButton,
   DpsButton,
   SupportButton,
@@ -58,7 +58,7 @@ const RoleSelect = () => {
       <PageContent>
         <Text>Select a role you would like to track games for:</Text>
         <RoleIcons>
-          <Tank>
+          <TankRole>
             <TankButton onClick={() => handleRoleSelect("tank", tankRank)}>
               <img src={tank} alt="tankIcon" />
               <RankDisplay value={tankRank} />
@@ -69,9 +69,9 @@ const RoleSelect = () => {
               text="Change Rank"
               onClick={() => handleChangeRank("tank")}
             />
-          </Tank>
+          </TankRole>
 
-          <Dps>
+          <DpsRole>
             <DpsButton onClick={() => handleRoleSelect("dps", dpsRank)}>
               <img src={dps} alt="dpsIcon" />
               <RankDisplay value={dpsRank} />
@@ -82,9 +82,9 @@ const RoleSelect = () => {
               text="Change Rank"
               onClick={() => handleChangeRank("dps")}
             />
-          </Dps>
+          </DpsRole>
 
-          <Support>
+          <SupportRole>
             <SupportButton
               onClick={() => handleRoleSelect("support", supportRank)}
             >
@@ -97,7 +97,7 @@ const RoleSelect = () => {
               text="Change Rank"
               onClick={() => handleChangeRank("support")}
             />
-          </Support>
+          </SupportRole>
         </RoleIcons>
       </PageContent>
     </div>
