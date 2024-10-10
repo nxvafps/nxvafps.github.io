@@ -18,7 +18,8 @@
 .env.test.local
 .env.production.local
 .env
-.code-workspace
+*.code-workspace
+vscode/*
 
 npm-debug.log*
 yarn-debug.log*
